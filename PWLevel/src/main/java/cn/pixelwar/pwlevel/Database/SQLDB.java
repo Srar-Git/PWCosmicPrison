@@ -189,7 +189,7 @@ public class SQLDB {
     /**
      * Back up all player data.
      * @param filePath Backup file path.
-     * @throws java.sql.SQLException
+     * @throws SQLException
      */
     public static void backup(String filePath) throws SQLException {
         try (Connection sqlConnection = DriverManager.getConnection("jdbc:sqlite:" + filePath)) {

@@ -9,32 +9,46 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.pixelwar</groupId>
-    <artifactId>PWLevel</artifactId>
+    <artifactId>PWItemManager</artifactId>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 
 
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
-            <scope>provided</scope>
+
         </dependency>
         <dependency>
             <groupId>com.github.SkriptLang</groupId>
             <artifactId>Skript</artifactId>
+
+        </dependency>
+
+<!--        本项目自己的依赖-->
+        <dependency>
+            <groupId>cn.pixelwar</groupId>
+            <artifactId>PWLevel</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.tr7zw</groupId>
+            <artifactId>item-nbt-api-plugin</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
 </project>
