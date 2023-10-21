@@ -24,6 +24,7 @@ public class OreBagAddEvent extends Event {
     public int getAmount() {
         return amount;
     }
+
     public int getSlot() {
         return slot;
     }
@@ -36,8 +37,6 @@ public class OreBagAddEvent extends Event {
     }
 
 
-
-
     public static HandlerList getHandlerList() {
         return HANDLERS;
     }
@@ -46,9 +45,6 @@ public class OreBagAddEvent extends Event {
     public HandlerList getHandlers() {
         return HANDLERS;
     }
-
-
-
 
 
 }

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public class EffectUpdateHandNBTInt extends Effect {
     private Expression<Player> playerin;
     private Expression<String> pathin;
-//    private Expression<String> nbtStringin;
+    //    private Expression<String> nbtStringin;
     private Expression<Number> nbtNumberin;
 
     static {
@@ -32,9 +32,9 @@ public class EffectUpdateHandNBTInt extends Effect {
 //        this.pathin = (Expression<String>) expressions[1];
 //        this.nbtStringin = (Expression<String>) expressions[2];
 //        }else {
-            this.playerin = (Expression<Player>) expressions[0];
-            this.pathin = (Expression<String>) expressions[1];
-            this.nbtNumberin = (Expression<Number>) expressions[2];
+        this.playerin = (Expression<Player>) expressions[0];
+        this.pathin = (Expression<String>) expressions[1];
+        this.nbtNumberin = (Expression<Number>) expressions[2];
 //        }
         return true;
     }
@@ -55,8 +55,8 @@ public class EffectUpdateHandNBTInt extends Effect {
 //        }
 //        if (this.nbtNumberin != null){
 //            long nbtNumber1 = (long) nbtNumberin.getSingle(e);
-            int nbtNumber = (int) nbtNumberin.getSingle(e).intValue();
-            setItemNBT.updateHandNBT(player, path, nbtNumber);
+        int nbtNumber = (int) nbtNumberin.getSingle(e).intValue();
+        setItemNBT.updateHandNBT(player, path, nbtNumber);
 //        }
 
     }

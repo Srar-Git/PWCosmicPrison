@@ -8,7 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class SetItemNBT {
 
-    public void updateHandNBT(Player player, String path, String nbtString){
+    public void updateHandNBT(Player player, String path, String nbtString) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -19,7 +19,8 @@ public class SetItemNBT {
             }
         }.runTask(PWItemManager.getPlugin());
     }
-    public void updateHandNBT(Player player, String path, int nbtInt){
+
+    public void updateHandNBT(Player player, String path, int nbtInt) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -42,7 +43,6 @@ public class SetItemNBT {
 //        ItemStack finalItem = nbti.getItem();
 //        player.getInventory().setItemInMainHand(finalItem);
 //    }
-
 
 
 }

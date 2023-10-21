@@ -16,19 +16,23 @@ public class EventValueLevel extends SimpleExpression<Integer> {
     static {
         Skript.registerExpression(EventValueLevel.class, Integer.class, ExpressionType.SIMPLE, new String[]{"[the] event-level"});
     }
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event event, boolean debug) {
         return null;

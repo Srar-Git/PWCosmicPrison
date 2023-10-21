@@ -16,17 +16,21 @@ import javax.annotation.Nullable;
 public class ExpGetDoubleNBT extends SimpleExpression<Double> {
     private Expression<ItemType> itemin;
     private Expression<String> pathin;
+
     static {
         Skript.registerExpression(ExpGetDoubleNBT.class, Double.class, ExpressionType.SIMPLE, new String[]{"doubletag %string% of nbt of %itemtypes%"});
     }
+
     @Override
     public Class<? extends Double> getReturnType() {
         return Double.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
@@ -34,6 +38,7 @@ public class ExpGetDoubleNBT extends SimpleExpression<Double> {
         this.itemin = (Expression<ItemType>) expressions[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event event, boolean debug) {
         return null;
@@ -46,7 +51,7 @@ public class ExpGetDoubleNBT extends SimpleExpression<Double> {
         String path = pathin.getSingle(event);
         ItemType itemType = itemin.getSingle(event);
         ItemStack item = itemType.getRandom();
-        return new Double[] {getItemNBT.getItemDoubleNBT(item, path)};
+        return new Double[]{getItemNBT.getItemDoubleNBT(item, path)};
     }
 
 }

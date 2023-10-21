@@ -19,7 +19,6 @@ public class PlayerShardBoosterData {
     }
 
 
-
     public void setShardMultiple(double ShardMultiple) {
         ShardMultiple = ShardMultiple;
     }

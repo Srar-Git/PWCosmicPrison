@@ -8,8 +8,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class Glowing {
 
-    public void makeHandGlow(Player player){
-        ItemStack item= player.getItemInHand();
+    public void makeHandGlow(Player player) {
+        ItemStack item = player.getItemInHand();
         ItemMeta meta = item.getItemMeta();
         meta.addEnchant(Enchantment.OXYGEN, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

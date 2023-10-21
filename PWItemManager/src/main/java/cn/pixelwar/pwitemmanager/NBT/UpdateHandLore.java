@@ -14,7 +14,8 @@ import java.util.List;
 
 public class UpdateHandLore {
     NumberFormat numberFormat = new NumberFormat();
-    public void updateHandEnergy(Player player, int xp, int needXp){
+
+    public void updateHandEnergy(Player player, int xp, int needXp) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -40,13 +41,14 @@ public class UpdateHandLore {
                     ItemMeta itemMeta = finalItem.getItemMeta();
                     List<String> lore = itemMeta.getLore();
                     int infoLine = 0;
-                    for (String str : lore){
-                        if (str.contains("| 宇宙能量")){
+                    for (String str : lore) {
+                        if (str.contains("| 宇宙能量")) {
                             break;
-                        }infoLine++;
+                        }
+                        infoLine++;
                     }
-                    lore.set(infoLine+1, ChatColorCast.format(block + " &f&l" + percent + "%"));
-                    lore.set(infoLine+2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
+                    lore.set(infoLine + 1, ChatColorCast.format(block + " &f&l" + percent + "%"));
+                    lore.set(infoLine + 2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
                     itemMeta.setLore(lore);
                     finalItem.setItemMeta(itemMeta);
                     player.getInventory().setItemInMainHand(finalItem);
@@ -80,13 +82,14 @@ public class UpdateHandLore {
                     ItemMeta itemMeta = finalItem.getItemMeta();
                     List<String> lore = itemMeta.getLore();
                     int infoLine = 0;
-                    for (String str : lore){
-                        if (str.contains("| 宇宙能量")){
+                    for (String str : lore) {
+                        if (str.contains("| 宇宙能量")) {
                             break;
-                        }infoLine++;
+                        }
+                        infoLine++;
                     }
-                    lore.set(infoLine+1, ChatColorCast.format(block + " &f&l" + percent + "%"));
-                    lore.set(infoLine+2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
+                    lore.set(infoLine + 1, ChatColorCast.format(block + " &f&l" + percent + "%"));
+                    lore.set(infoLine + 2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
                     itemMeta.setLore(lore);
                     finalItem.setItemMeta(itemMeta);
                     player.getInventory().setItemInMainHand(finalItem);

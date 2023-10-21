@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ShardMenu {
 
-    public void createGUI(Player player){
-        Inventory gui = Bukkit.createInventory(player, 54, ChatColor.DARK_GRAY+"矿物碎片 "+ChatColor.UNDERLINE+player.getDisplayName());
+    public void createGUI(Player player) {
+        Inventory gui = Bukkit.createInventory(player, 54, ChatColor.DARK_GRAY + "矿物碎片 " + ChatColor.UNDERLINE + player.getDisplayName());
 
         ItemStack back = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
         ItemMeta infoMeta = back.getItemMeta();
@@ -21,12 +21,12 @@ public class ShardMenu {
         player.playSound(player.getEyeLocation(), Sound.UI_BUTTON_CLICK, SoundCategory.BLOCKS, 1.0f, 2.0f);
 //        PlayPacketSound(player, "ui.button.click", player.getEyeLocation().getX(), player.getEyeLocation().getY(), player.getEyeLocation().getZ(), 1.0f, 2.0f);
         ItemStack[] allBackGround = {};
-        for (int i = 0; i < 54; i++){
+        for (int i = 0; i < 54; i++) {
             gui.setItem(i, back);
         }
         ItemStack withdraw = new ItemStack(Material.CHEST);
         ItemMeta withdrawMeta = withdraw.getItemMeta();
-        withdrawMeta.setDisplayName(ChatColor.RED+ ""+ ChatColor.BOLD + "取出所有矿物碎片");
+        withdrawMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "取出所有矿物碎片");
         withdraw.setItemMeta(withdrawMeta);
 
         List<String> LoreList = new ArrayList<String>();

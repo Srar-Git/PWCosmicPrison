@@ -41,7 +41,7 @@ public class EffectTeleport extends Effect {
         Teleport teleport = new Teleport();
         Player player = playerin.getSingle(e);
         int distance = distancein.getSingle(e).intValue();
-        teleport.EnchantTeleport(player,distance);
+        teleport.EnchantTeleport(player, distance);
     }
 
 

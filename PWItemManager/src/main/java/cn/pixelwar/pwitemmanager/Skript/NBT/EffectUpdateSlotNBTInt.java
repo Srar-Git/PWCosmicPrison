@@ -33,10 +33,10 @@ public class EffectUpdateSlotNBTInt extends Effect {
 //            this.pathin = (Expression<String>) expressions[2];
 //            this.nbtStringin = (Expression<String>) expressions[3];
 //        }else {
-            this.playerin = (Expression<Player>) expressions[0];
-            this.slotin = (Expression<Number>) expressions[1];
-            this.pathin = (Expression<String>) expressions[2];
-            this.nbtNumberin = (Expression<Number>) expressions[3];
+        this.playerin = (Expression<Player>) expressions[0];
+        this.slotin = (Expression<Number>) expressions[1];
+        this.pathin = (Expression<String>) expressions[2];
+        this.nbtNumberin = (Expression<Number>) expressions[3];
 //        }
         return true;
     }
@@ -60,8 +60,8 @@ public class EffectUpdateSlotNBTInt extends Effect {
 //        }
 //        if (this.nbtNumberin != null){
 //            long nbtNumber1 = (long) nbtNumberin.getSingle(e);
-            int nbtNumber = (int) nbtNumberin.getSingle(e).intValue();
-            setSlotNBT.setSlotItemNBT(player, slot, path, nbtNumber);
+        int nbtNumber = (int) nbtNumberin.getSingle(e).intValue();
+        setSlotNBT.setSlotItemNBT(player, slot, path, nbtNumber);
 //        }
 
     }

@@ -43,7 +43,7 @@ public class EffectUpdateSlotBookNum extends Effect {
         Player player = playerin.getSingle(e);
         int num = numin.getSingle(e).intValue();
         int slot = slotin.getSingle(e).intValue();
-        updateSlotLore.updateBookNum(player,num,slot);
+        updateSlotLore.updateBookNum(player, num, slot);
     }
 
 

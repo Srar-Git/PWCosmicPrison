@@ -43,7 +43,7 @@ public class DropListener implements Listener {
                     }.runTask(PWItemManager.getPlugin());
 
                 }
-            }.runTaskLaterAsynchronously(PWItemManager.getPlugin(),  100L);
+            }.runTaskLaterAsynchronously(PWItemManager.getPlugin(), 100L);
 //            try {
 //                Field itemField = dropItem.getClass().getDeclaredField("item");
 //                Field ageField;
@@ -60,27 +60,26 @@ public class DropListener implements Listener {
 //            }
         }
 
-        if (this.plugin.getStealDelay() > 0)
-        {
+        if (this.plugin.getStealDelay() > 0) {
 
             this.playerDrops.put(event.getItemDrop(), new AbstractMap.SimpleEntry<>(event.getPlayer(), Integer.valueOf(this.plugin.getStealDelay())));
         }
     }
+
     @EventHandler
     public void onPickup(PlayerPickupItemEvent event) {
         Item item = event.getItem();
         if (this.playerDrops.containsKey(item)) {
 
-            Player ply = (Player)((Map.Entry)this.playerDrops.get(item)).getKey();
+            Player ply = (Player) ((Map.Entry) this.playerDrops.get(item)).getKey();
             UUID plyuuid = ply.getUniqueId();
-            int delay = ((Integer)((Map.Entry)this.playerDrops.get(item)).getValue()).intValue();
+            int delay = ((Integer) ((Map.Entry) this.playerDrops.get(item)).getValue()).intValue();
 
             if (!event.getPlayer().getUniqueId().equals(plyuuid) && item.getTicksLived() < delay) {
 
                 event.setCancelled(true);
 
-            }
-            else {
+            } else {
 
                 this.playerDrops.remove(item);
             }
@@ -88,15 +87,15 @@ public class DropListener implements Listener {
     }
 
     @EventHandler
-    public void onItemDespawn(ItemDespawnEvent event){
+    public void onItemDespawn(ItemDespawnEvent event) {
         Item item = event.getEntity();
         if (this.playerDrops.containsKey(item)) {
 
-                this.playerDrops.remove(item);
-            }
+            this.playerDrops.remove(item);
+        }
     }
 
-    public static void dropItem(Player owner, ItemStack item){
+    public static void dropItem(Player owner, ItemStack item) {
         Item dropItem = owner.getWorld().dropItemNaturally(owner.getLocation(), item);
         dropItem.setItemStack(item);
 
@@ -120,11 +119,9 @@ public class DropListener implements Listener {
             }
         }
 
-        if (PWItemManager.getStealDelay() > 0)
-        {
+        if (PWItemManager.getStealDelay() > 0) {
             playerDrops.put(dropItem, new AbstractMap.SimpleEntry<>(owner, Integer.valueOf(PWItemManager.getStealDelay())));
         }
-
 
 
     }

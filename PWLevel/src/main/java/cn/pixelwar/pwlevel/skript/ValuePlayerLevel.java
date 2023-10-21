@@ -20,6 +20,7 @@ public class ValuePlayerLevel extends SimpleExpression<Integer> {
 
     private Expression<Player> player;
     private PlayerExpDataManager playerExpDataManager = new PlayerExpDataManager();
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
@@ -47,7 +48,7 @@ public class ValuePlayerLevel extends SimpleExpression<Integer> {
     protected Integer[] get(Event event) {
         Player p = player.getSingle(event);
         if (p != null) {
-            return new Integer[] {
+            return new Integer[]{
                     playerExpDataManager.getLevel(p)
             };
         }

@@ -27,10 +27,10 @@ public class EffectUpdateSlotNBTString extends Effect {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
-            this.playerin = (Expression<Player>) expressions[0];
-            this.slotin = (Expression<Number>) expressions[1];
-            this.pathin = (Expression<String>) expressions[2];
-            this.nbtStringin = (Expression<String>) expressions[3];
+        this.playerin = (Expression<Player>) expressions[0];
+        this.slotin = (Expression<Number>) expressions[1];
+        this.pathin = (Expression<String>) expressions[2];
+        this.nbtStringin = (Expression<String>) expressions[3];
         return true;
     }
 
@@ -48,8 +48,8 @@ public class EffectUpdateSlotNBTString extends Effect {
 //        long slotLong = (long) slotin.getSingle(e);
         int slot = (int) slotin.getSingle(e).intValue();
 
-            String nbtString = nbtStringin.getSingle(e);
-            setSlotNBT.setSlotItemNBT(player, slot, path, nbtString);
+        String nbtString = nbtStringin.getSingle(e);
+        setSlotNBT.setSlotItemNBT(player, slot, path, nbtString);
 
 
     }

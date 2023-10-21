@@ -17,19 +17,23 @@ public class EventValuePlayer extends SimpleExpression<Player> {
     static {
         Skript.registerExpression(EventValuePlayer.class, Player.class, ExpressionType.SIMPLE, new String[]{"[the] owner"});
     }
+
     @Override
     public Class<? extends Player> getReturnType() {
         return Player.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event event, boolean debug) {
         return null;

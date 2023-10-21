@@ -18,7 +18,6 @@ import static cn.pixelwar.pwlevel.PlayerData.PlayerOreExp.PlayerOreExpDataManage
 /**
  * This class will automatically register as a placeholder expansion
  * when a jar including this class is added to the /plugins/placeholderapi/expansions/ folder
- *
  */
 public class Placeholders extends PlaceholderExpansion {
 
@@ -81,200 +80,194 @@ public class Placeholders extends PlaceholderExpansion {
         PlayerOreExpDataManager playerOreExpDataManager = new PlayerOreExpDataManager();
         if (
                 identifier.equals("ironpercent") ||
-                identifier.equals("lapispercent") ||
-                identifier.equals("redstonepercent") ||
-                identifier.equals("goldpercent") ||
-                identifier.equals("diamondpercent") ||
-                identifier.equals("emeraldpercent")
+                        identifier.equals("lapispercent") ||
+                        identifier.equals("redstonepercent") ||
+                        identifier.equals("goldpercent") ||
+                        identifier.equals("diamondpercent") ||
+                        identifier.equals("emeraldpercent")
         ) {
 
-            if (getPlayerOreExpDataMap().containsKey(p.getName())){
+            if (getPlayerOreExpDataMap().containsKey(p.getName())) {
                 String type = identifier.substring(0, identifier.indexOf("percent"));
-                return "" + Math.round(playerOreExpDataManager.getOreExpPercent(p, type)*100);
-            }else{
-                return 0+"";
+                return "" + Math.round(playerOreExpDataManager.getOreExpPercent(p, type) * 100);
+            } else {
+                return 0 + "";
             }
         }
         if (identifier.equals("bestore")) {
             int level = playerExpDataManager.getLevel(p);
             NumberFormat numberFormat = new NumberFormat();
-            if (level<10){
-                return ChatColor.GRAY+"煤矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ PWLevel.config.getLong("orexp.coal") + ChatColor.WHITE +"XP/个";
+            if (level < 10) {
+                return ChatColor.GRAY + "煤矿 " + ChatColor.LIGHT_PURPLE + "▸ " + PWLevel.config.getLong("orexp.coal") + ChatColor.WHITE + "XP/个";
             }
-            if (level>=10 && level<30){
-                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron")* PWLevel.config.getLong("orexp.iron"));
+            if (level >= 10 && level < 30) {
+                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron") * PWLevel.config.getLong("orexp.iron"));
                 long coalxp = PWLevel.config.getLong("orexp.coal");
-                if (ironxp>=coalxp){
-                    return ChatColor.GOLD+"铁矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(ironxp) + ChatColor.WHITE +"XP/个";
-                }else{
-                    return ChatColor.GRAY+"煤矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(coalxp) + ChatColor.WHITE +"XP/个";
+                if (ironxp >= coalxp) {
+                    return ChatColor.GOLD + "铁矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(ironxp) + ChatColor.WHITE + "XP/个";
+                } else {
+                    return ChatColor.GRAY + "煤矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(coalxp) + ChatColor.WHITE + "XP/个";
                 }
             }
-            if (level>=30 && level<50){
-                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron")* PWLevel.config.getLong("orexp.iron"));
-                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis")* PWLevel.config.getLong("orexp.lapis"));
+            if (level >= 30 && level < 50) {
+                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron") * PWLevel.config.getLong("orexp.iron"));
+                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis") * PWLevel.config.getLong("orexp.lapis"));
                 long coalxp = PWLevel.config.getLong("orexp.coal");
-                if (lapisxp>=coalxp && lapisxp>=ironxp){
-                    return ChatColor.BLUE+"青金石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE +"XP/个";
+                if (lapisxp >= coalxp && lapisxp >= ironxp) {
+                    return ChatColor.BLUE + "青金石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (ironxp>=coalxp && ironxp>=lapisxp){
-                    return ChatColor.GOLD+"铁矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(ironxp) + ChatColor.WHITE +"XP/个";
-                }
-                else{
-                    return ChatColor.GRAY+"煤矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(coalxp) + ChatColor.WHITE +"XP/个";
+                if (ironxp >= coalxp && ironxp >= lapisxp) {
+                    return ChatColor.GOLD + "铁矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(ironxp) + ChatColor.WHITE + "XP/个";
+                } else {
+                    return ChatColor.GRAY + "煤矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(coalxp) + ChatColor.WHITE + "XP/个";
                 }
             }
-            if (level>=50 && level<70){
-                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron")* PWLevel.config.getLong("orexp.iron"));
-                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis")* PWLevel.config.getLong("orexp.lapis"));
-                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone")* PWLevel.config.getLong("orexp.redstone"));
+            if (level >= 50 && level < 70) {
+                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron") * PWLevel.config.getLong("orexp.iron"));
+                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis") * PWLevel.config.getLong("orexp.lapis"));
+                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone") * PWLevel.config.getLong("orexp.redstone"));
                 long coalxp = PWLevel.config.getLong("orexp.coal");
-                if (lapisxp>=coalxp && lapisxp>=ironxp && lapisxp>=redstonexp){
-                    return ChatColor.BLUE+"青金石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE +"XP/个";
+                if (lapisxp >= coalxp && lapisxp >= ironxp && lapisxp >= redstonexp) {
+                    return ChatColor.BLUE + "青金石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (redstonexp>=coalxp && redstonexp>=ironxp && redstonexp>=lapisxp){
-                    return ChatColor.RED+"红石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE +"XP/个";
+                if (redstonexp >= coalxp && redstonexp >= ironxp && redstonexp >= lapisxp) {
+                    return ChatColor.RED + "红石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE + "XP/个";
                 }
-                if (ironxp>=coalxp && ironxp>=lapisxp && ironxp>=redstonexp){
-                    return ChatColor.GOLD+"铁矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(ironxp) + ChatColor.WHITE +"XP/个";
-                }
-                else{
-                    return ChatColor.GRAY+"煤矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(coalxp) + ChatColor.WHITE +"XP/个";
+                if (ironxp >= coalxp && ironxp >= lapisxp && ironxp >= redstonexp) {
+                    return ChatColor.GOLD + "铁矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(ironxp) + ChatColor.WHITE + "XP/个";
+                } else {
+                    return ChatColor.GRAY + "煤矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(coalxp) + ChatColor.WHITE + "XP/个";
                 }
             }
-            if (level>=70 && level<90){
-                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron")* PWLevel.config.getLong("orexp.iron"));
-                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis")* PWLevel.config.getLong("orexp.lapis"));
-                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone")* PWLevel.config.getLong("orexp.redstone"));
-                long goldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "gold")* PWLevel.config.getLong("orexp.gold"));
+            if (level >= 70 && level < 90) {
+                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron") * PWLevel.config.getLong("orexp.iron"));
+                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis") * PWLevel.config.getLong("orexp.lapis"));
+                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone") * PWLevel.config.getLong("orexp.redstone"));
+                long goldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "gold") * PWLevel.config.getLong("orexp.gold"));
                 long coalxp = PWLevel.config.getLong("orexp.coal");
-                if (goldxp>=coalxp && goldxp>=ironxp && goldxp>=redstonexp && goldxp>=lapisxp){
-                    return ChatColor.YELLOW+"金矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(goldxp) + ChatColor.WHITE +"XP/个";
+                if (goldxp >= coalxp && goldxp >= ironxp && goldxp >= redstonexp && goldxp >= lapisxp) {
+                    return ChatColor.YELLOW + "金矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(goldxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (lapisxp>=coalxp && lapisxp>=ironxp && lapisxp>=redstonexp && lapisxp>=goldxp){
-                    return ChatColor.BLUE+"青金石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE +"XP/个";
+                if (lapisxp >= coalxp && lapisxp >= ironxp && lapisxp >= redstonexp && lapisxp >= goldxp) {
+                    return ChatColor.BLUE + "青金石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (redstonexp>=coalxp && redstonexp>=ironxp && redstonexp>=lapisxp && redstonexp>=goldxp){
-                    return ChatColor.RED+"红石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE +"XP/个";
+                if (redstonexp >= coalxp && redstonexp >= ironxp && redstonexp >= lapisxp && redstonexp >= goldxp) {
+                    return ChatColor.RED + "红石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE + "XP/个";
                 }
-                if (ironxp>=coalxp && ironxp>=lapisxp && ironxp>=redstonexp && ironxp>=goldxp){
-                    return ChatColor.GOLD+"铁矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(ironxp) + ChatColor.WHITE +"XP/个";
-                }
-                else{
-                    return ChatColor.GRAY+"煤矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(coalxp) + ChatColor.WHITE +"XP/个";
+                if (ironxp >= coalxp && ironxp >= lapisxp && ironxp >= redstonexp && ironxp >= goldxp) {
+                    return ChatColor.GOLD + "铁矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(ironxp) + ChatColor.WHITE + "XP/个";
+                } else {
+                    return ChatColor.GRAY + "煤矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(coalxp) + ChatColor.WHITE + "XP/个";
                 }
             }
-            if (level>=90 && level<100){
-                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron")* PWLevel.config.getLong("orexp.iron"));
-                long diamondxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "diamond")* PWLevel.config.getLong("orexp.diamond"));
-                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis")* PWLevel.config.getLong("orexp.lapis"));
-                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone")* PWLevel.config.getLong("orexp.redstone"));
-                long goldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "gold")* PWLevel.config.getLong("orexp.gold"));
+            if (level >= 90 && level < 100) {
+                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron") * PWLevel.config.getLong("orexp.iron"));
+                long diamondxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "diamond") * PWLevel.config.getLong("orexp.diamond"));
+                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis") * PWLevel.config.getLong("orexp.lapis"));
+                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone") * PWLevel.config.getLong("orexp.redstone"));
+                long goldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "gold") * PWLevel.config.getLong("orexp.gold"));
                 long coalxp = PWLevel.config.getLong("orexp.coal");
-                if (diamondxp>=coalxp && diamondxp>=ironxp && diamondxp>=redstonexp && diamondxp>=lapisxp && diamondxp>=goldxp){
-                    return ChatColor.AQUA+"钻石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(diamondxp) + ChatColor.WHITE +"XP/个";
+                if (diamondxp >= coalxp && diamondxp >= ironxp && diamondxp >= redstonexp && diamondxp >= lapisxp && diamondxp >= goldxp) {
+                    return ChatColor.AQUA + "钻石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(diamondxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (goldxp>=coalxp && goldxp>=ironxp && goldxp>=redstonexp && goldxp>=lapisxp && goldxp>=diamondxp){
-                    return ChatColor.YELLOW+"金矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(goldxp) + ChatColor.WHITE +"XP/个";
+                if (goldxp >= coalxp && goldxp >= ironxp && goldxp >= redstonexp && goldxp >= lapisxp && goldxp >= diamondxp) {
+                    return ChatColor.YELLOW + "金矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(goldxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (lapisxp>=coalxp && lapisxp>=ironxp && lapisxp>=redstonexp && lapisxp>=goldxp && lapisxp>=diamondxp){
-                    return ChatColor.BLUE+"青金石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE +"XP/个";
+                if (lapisxp >= coalxp && lapisxp >= ironxp && lapisxp >= redstonexp && lapisxp >= goldxp && lapisxp >= diamondxp) {
+                    return ChatColor.BLUE + "青金石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (redstonexp>=coalxp && redstonexp>=ironxp && redstonexp>=lapisxp && redstonexp>=goldxp && redstonexp>=diamondxp){
-                    return ChatColor.RED+"红石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE +"XP/个";
+                if (redstonexp >= coalxp && redstonexp >= ironxp && redstonexp >= lapisxp && redstonexp >= goldxp && redstonexp >= diamondxp) {
+                    return ChatColor.RED + "红石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE + "XP/个";
                 }
-                if (ironxp>=coalxp && ironxp>=lapisxp && ironxp>=redstonexp && ironxp>=goldxp && ironxp>=diamondxp){
-                    return ChatColor.GOLD+"铁矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(ironxp) + ChatColor.WHITE +"XP/个";
-                }
-                else{
-                    return ChatColor.GRAY+"煤矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(coalxp) + ChatColor.WHITE +"XP/个";
+                if (ironxp >= coalxp && ironxp >= lapisxp && ironxp >= redstonexp && ironxp >= goldxp && ironxp >= diamondxp) {
+                    return ChatColor.GOLD + "铁矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(ironxp) + ChatColor.WHITE + "XP/个";
+                } else {
+                    return ChatColor.GRAY + "煤矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(coalxp) + ChatColor.WHITE + "XP/个";
                 }
             }
-            if (level>=100){
-                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron")* PWLevel.config.getLong("orexp.iron"));
-                long emeraldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "emerald")* PWLevel.config.getLong("orexp.emerald"));
-                long diamondxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "diamond")* PWLevel.config.getLong("orexp.diamond"));
-                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis")* PWLevel.config.getLong("orexp.lapis"));
-                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone")* PWLevel.config.getLong("orexp.redstone"));
-                long goldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "gold")* PWLevel.config.getLong("orexp.gold"));
+            if (level >= 100) {
+                long ironxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "iron") * PWLevel.config.getLong("orexp.iron"));
+                long emeraldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "emerald") * PWLevel.config.getLong("orexp.emerald"));
+                long diamondxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "diamond") * PWLevel.config.getLong("orexp.diamond"));
+                long lapisxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "lapis") * PWLevel.config.getLong("orexp.lapis"));
+                long redstonexp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "redstone") * PWLevel.config.getLong("orexp.redstone"));
+                long goldxp = Math.round(playerOreExpDataManager.getOreExpPercent(p, "gold") * PWLevel.config.getLong("orexp.gold"));
                 long coalxp = PWLevel.config.getLong("orexp.coal");
-                if (emeraldxp>=coalxp && emeraldxp>=ironxp && emeraldxp>=redstonexp && emeraldxp>=lapisxp && emeraldxp>=goldxp && emeraldxp>=diamondxp){
-                    return ChatColor.GREEN+"绿宝石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(emeraldxp) + ChatColor.WHITE +"XP/个";
+                if (emeraldxp >= coalxp && emeraldxp >= ironxp && emeraldxp >= redstonexp && emeraldxp >= lapisxp && emeraldxp >= goldxp && emeraldxp >= diamondxp) {
+                    return ChatColor.GREEN + "绿宝石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(emeraldxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (diamondxp>=coalxp && diamondxp>=ironxp && diamondxp>=redstonexp && diamondxp>=lapisxp && diamondxp>=goldxp && diamondxp>=emeraldxp){
-                    return ChatColor.AQUA+"钻石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(diamondxp) + ChatColor.WHITE +"XP/个";
+                if (diamondxp >= coalxp && diamondxp >= ironxp && diamondxp >= redstonexp && diamondxp >= lapisxp && diamondxp >= goldxp && diamondxp >= emeraldxp) {
+                    return ChatColor.AQUA + "钻石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(diamondxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (goldxp>=coalxp && goldxp>=ironxp && goldxp>=redstonexp && goldxp>=lapisxp && goldxp>=diamondxp && goldxp>=emeraldxp){
-                    return ChatColor.YELLOW+"金矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(goldxp) + ChatColor.WHITE +"XP/个";
+                if (goldxp >= coalxp && goldxp >= ironxp && goldxp >= redstonexp && goldxp >= lapisxp && goldxp >= diamondxp && goldxp >= emeraldxp) {
+                    return ChatColor.YELLOW + "金矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(goldxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (lapisxp>=coalxp && lapisxp>=ironxp && lapisxp>=redstonexp && lapisxp>=goldxp && lapisxp>=diamondxp && lapisxp>=emeraldxp){
-                    return ChatColor.BLUE+"青金石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE +"XP/个";
+                if (lapisxp >= coalxp && lapisxp >= ironxp && lapisxp >= redstonexp && lapisxp >= goldxp && lapisxp >= diamondxp && lapisxp >= emeraldxp) {
+                    return ChatColor.BLUE + "青金石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(lapisxp) + ChatColor.WHITE + "XP/个";
                 }
-                if (redstonexp>=coalxp && redstonexp>=ironxp && redstonexp>=lapisxp && redstonexp>=goldxp && redstonexp>=diamondxp && redstonexp>=emeraldxp){
-                    return ChatColor.RED+"红石矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE +"XP/个";
+                if (redstonexp >= coalxp && redstonexp >= ironxp && redstonexp >= lapisxp && redstonexp >= goldxp && redstonexp >= diamondxp && redstonexp >= emeraldxp) {
+                    return ChatColor.RED + "红石矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(redstonexp) + ChatColor.WHITE + "XP/个";
                 }
-                if (ironxp>=coalxp && ironxp>=lapisxp && ironxp>=redstonexp && ironxp>=goldxp && ironxp>=diamondxp && ironxp>=emeraldxp){
-                    return ChatColor.GOLD+"铁矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(ironxp) + ChatColor.WHITE +"XP/个";
-                }
-                else{
-                    return ChatColor.GRAY+"煤矿 "+ ChatColor.LIGHT_PURPLE+"▸ "+ numberFormat.getLongFormat(coalxp) + ChatColor.WHITE +"XP/个";
+                if (ironxp >= coalxp && ironxp >= lapisxp && ironxp >= redstonexp && ironxp >= goldxp && ironxp >= diamondxp && ironxp >= emeraldxp) {
+                    return ChatColor.GOLD + "铁矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(ironxp) + ChatColor.WHITE + "XP/个";
+                } else {
+                    return ChatColor.GRAY + "煤矿 " + ChatColor.LIGHT_PURPLE + "▸ " + numberFormat.getLongFormat(coalxp) + ChatColor.WHITE + "XP/个";
                 }
             }
-
 
 
         }
         if (identifier.equals("shardtime")) {
 
-            if (getPlayerShardBoosterDataMap().containsKey(p.getName())){
+            if (getPlayerShardBoosterDataMap().containsKey(p.getName())) {
                 TimeFormat timeFormat = new TimeFormat();
                 return "" + timeFormat.getTimeFormat(playerBoosterDataManager.getShardBoosterTime(p));
-            }else{
-                return ChatColor.RED+"✖ "+ ChatColor.WHITE+"未激活";
+            } else {
+                return ChatColor.RED + "✖ " + ChatColor.WHITE + "未激活";
             }
         }
         if (identifier.equals("shardmulti")) {
 
-            if (getPlayerShardBoosterDataMap().containsKey(p.getName())){
+            if (getPlayerShardBoosterDataMap().containsKey(p.getName())) {
 
                 return "x" + playerBoosterDataManager.getShardMultiple(p);
-            }else{
+            } else {
                 return "";
             }
         }
         if (identifier.equals("exptime")) {
 
-            if (getPlayerExpBoosterDataMap().containsKey(p.getName())){
+            if (getPlayerExpBoosterDataMap().containsKey(p.getName())) {
                 TimeFormat timeFormat = new TimeFormat();
                 return "" + timeFormat.getTimeFormat(playerBoosterDataManager.getExpBoosterTime(p));
-            }else{
-                return ChatColor.RED+"✖ "+ ChatColor.WHITE+"未激活";
+            } else {
+                return ChatColor.RED + "✖ " + ChatColor.WHITE + "未激活";
             }
         }
         if (identifier.equals("expmulti")) {
 
-            if (getPlayerExpBoosterDataMap().containsKey(p.getName())){
+            if (getPlayerExpBoosterDataMap().containsKey(p.getName())) {
 
                 return "x" + playerBoosterDataManager.getExpMultiple(p);
-            }else{
+            } else {
                 return "";
             }
         }
         if (identifier.equals("energytime")) {
 
-            if (getPlayerEnergyBoosterDataMap().containsKey(p.getName())){
+            if (getPlayerEnergyBoosterDataMap().containsKey(p.getName())) {
                 TimeFormat timeFormat = new TimeFormat();
                 return "" + timeFormat.getTimeFormat(playerBoosterDataManager.getEnergyBoosterTime(p));
-            }else{
-                return ChatColor.RED+"✖ "+ ChatColor.WHITE+"未激活";
+            } else {
+                return ChatColor.RED + "✖ " + ChatColor.WHITE + "未激活";
             }
         }
         if (identifier.equals("energymulti")) {
 
-            if (getPlayerEnergyBoosterDataMap().containsKey(p.getName())){
+            if (getPlayerEnergyBoosterDataMap().containsKey(p.getName())) {
 
                 return "x" + playerBoosterDataManager.getEnergyMultiple(p);
-            }else{
+            } else {
                 return "";
             }
         }
@@ -282,75 +275,86 @@ public class Placeholders extends PlaceholderExpansion {
             return "" + playerExpDataManager.getLevel(p);
         }
         if (identifier.equals("nextlevel")) {
-            if(     (playerExpDataManager.getPrestige(p)==0 && playerExpDataManager.getLevel(p)==100) ||
-                    (playerExpDataManager.getPrestige(p)==1 && playerExpDataManager.getLevel(p)==101) ||
-                    (playerExpDataManager.getPrestige(p)==2 && playerExpDataManager.getLevel(p)==102) ||
-                    (playerExpDataManager.getPrestige(p)==3 && playerExpDataManager.getLevel(p)==103) ||
-                    (playerExpDataManager.getPrestige(p)==4 && playerExpDataManager.getLevel(p)==104) ||
-                    (playerExpDataManager.getPrestige(p)==5 && playerExpDataManager.getLevel(p)==105) ||
-                    (playerExpDataManager.getPrestige(p)==6 && playerExpDataManager.getLevel(p)==106)
-            )
-            {
-                    return "荣誉等级"+ ChatColor.LIGHT_PURPLE+""+(playerExpDataManager.getPrestige(p)+1);
+            if ((playerExpDataManager.getPrestige(p) == 0 && playerExpDataManager.getLevel(p) == 100) ||
+                    (playerExpDataManager.getPrestige(p) == 1 && playerExpDataManager.getLevel(p) == 101) ||
+                    (playerExpDataManager.getPrestige(p) == 2 && playerExpDataManager.getLevel(p) == 102) ||
+                    (playerExpDataManager.getPrestige(p) == 3 && playerExpDataManager.getLevel(p) == 103) ||
+                    (playerExpDataManager.getPrestige(p) == 4 && playerExpDataManager.getLevel(p) == 104) ||
+                    (playerExpDataManager.getPrestige(p) == 5 && playerExpDataManager.getLevel(p) == 105) ||
+                    (playerExpDataManager.getPrestige(p) == 6 && playerExpDataManager.getLevel(p) == 106)
+            ) {
+                return "荣誉等级" + ChatColor.LIGHT_PURPLE + "" + (playerExpDataManager.getPrestige(p) + 1);
             }
-            return "" + (playerExpDataManager.getLevel(p)+1);
+            return "" + (playerExpDataManager.getLevel(p) + 1);
         }
         if (identifier.equals("totalexp")) {
             NumberFormat numberFormat = new NumberFormat();
-            return "" +numberFormat.getLongFormat(playerExpDataManager.getTotalExp(p));
+            return "" + numberFormat.getLongFormat(playerExpDataManager.getTotalExp(p));
         }
         if (identifier.equals("prestige")) {
             return "" + playerExpDataManager.getPrestige(p);
         }
         if (identifier.equals("prestige1")) {
-            int prestige =  playerExpDataManager.getPrestige(p);
-            if (prestige==0){return "";}
-            if (prestige==1){return ChatColor.WHITE + "§一";}
-            if (prestige==2){return ChatColor.WHITE + "§二";}
-            if (prestige==3){return ChatColor.WHITE + "§三";}
-            if (prestige==4){return ChatColor.WHITE + "§四";}
-            if (prestige==5){return ChatColor.WHITE + "§五";}
-            if (prestige==6){return ChatColor.WHITE + "§六";}
+            int prestige = playerExpDataManager.getPrestige(p);
+            if (prestige == 0) {
+                return "";
+            }
+            if (prestige == 1) {
+                return ChatColor.WHITE + "§一";
+            }
+            if (prestige == 2) {
+                return ChatColor.WHITE + "§二";
+            }
+            if (prestige == 3) {
+                return ChatColor.WHITE + "§三";
+            }
+            if (prestige == 4) {
+                return ChatColor.WHITE + "§四";
+            }
+            if (prestige == 5) {
+                return ChatColor.WHITE + "§五";
+            }
+            if (prestige == 6) {
+                return ChatColor.WHITE + "§六";
+            }
         }
         if (identifier.equals("exptonext")) {
-            if(     (playerExpDataManager.getPrestige(p)==0 && playerExpDataManager.getLevel(p)==100) ||
-                    (playerExpDataManager.getPrestige(p)==1 && playerExpDataManager.getLevel(p)==101) ||
-                    (playerExpDataManager.getPrestige(p)==2 && playerExpDataManager.getLevel(p)==102) ||
-                    (playerExpDataManager.getPrestige(p)==3 && playerExpDataManager.getLevel(p)==103) ||
-                    (playerExpDataManager.getPrestige(p)==4 && playerExpDataManager.getLevel(p)==104) ||
-                    (playerExpDataManager.getPrestige(p)==5 && playerExpDataManager.getLevel(p)==105) ||
-                    (playerExpDataManager.getPrestige(p)==6 && playerExpDataManager.getLevel(p)==106)
-            )
-            {
+            if ((playerExpDataManager.getPrestige(p) == 0 && playerExpDataManager.getLevel(p) == 100) ||
+                    (playerExpDataManager.getPrestige(p) == 1 && playerExpDataManager.getLevel(p) == 101) ||
+                    (playerExpDataManager.getPrestige(p) == 2 && playerExpDataManager.getLevel(p) == 102) ||
+                    (playerExpDataManager.getPrestige(p) == 3 && playerExpDataManager.getLevel(p) == 103) ||
+                    (playerExpDataManager.getPrestige(p) == 4 && playerExpDataManager.getLevel(p) == 104) ||
+                    (playerExpDataManager.getPrestige(p) == 5 && playerExpDataManager.getLevel(p) == 105) ||
+                    (playerExpDataManager.getPrestige(p) == 6 && playerExpDataManager.getLevel(p) == 106)
+            ) {
                 return "请升级";
             }
             NumberFormat numberFormat = new NumberFormat();
-            long nxetExp = PWLevel.config.getLong("levels.level"+(playerExpDataManager.getLevel(p)+1));
-            nxetExp = nxetExp*(1+ playerExpDataManager.getPrestige(p));
-            return  numberFormat.getLongFormat(nxetExp - playerExpDataManager.getTotalExp(p))+"XP";
+            long nxetExp = PWLevel.config.getLong("levels.level" + (playerExpDataManager.getLevel(p) + 1));
+            nxetExp = nxetExp * (1 + playerExpDataManager.getPrestige(p));
+            return numberFormat.getLongFormat(nxetExp - playerExpDataManager.getTotalExp(p)) + "XP";
         }
         if (identifier.equals("percent")) {
-            if(     (playerExpDataManager.getPrestige(p)==0 && playerExpDataManager.getLevel(p)==100) ||
-                    (playerExpDataManager.getPrestige(p)==1 && playerExpDataManager.getLevel(p)==101) ||
-                    (playerExpDataManager.getPrestige(p)==2 && playerExpDataManager.getLevel(p)==102) ||
-                    (playerExpDataManager.getPrestige(p)==3 && playerExpDataManager.getLevel(p)==103) ||
-                    (playerExpDataManager.getPrestige(p)==4 && playerExpDataManager.getLevel(p)==104) ||
-                    (playerExpDataManager.getPrestige(p)==5 && playerExpDataManager.getLevel(p)==105) ||
-                    (playerExpDataManager.getPrestige(p)==6 && playerExpDataManager.getLevel(p)==106)
-            )
-            {
-                return ChatColor.RED+"已满级";
+            if ((playerExpDataManager.getPrestige(p) == 0 && playerExpDataManager.getLevel(p) == 100) ||
+                    (playerExpDataManager.getPrestige(p) == 1 && playerExpDataManager.getLevel(p) == 101) ||
+                    (playerExpDataManager.getPrestige(p) == 2 && playerExpDataManager.getLevel(p) == 102) ||
+                    (playerExpDataManager.getPrestige(p) == 3 && playerExpDataManager.getLevel(p) == 103) ||
+                    (playerExpDataManager.getPrestige(p) == 4 && playerExpDataManager.getLevel(p) == 104) ||
+                    (playerExpDataManager.getPrestige(p) == 5 && playerExpDataManager.getLevel(p) == 105) ||
+                    (playerExpDataManager.getPrestige(p) == 6 && playerExpDataManager.getLevel(p) == 106)
+            ) {
+                return ChatColor.RED + "已满级";
             }
-            long nxetExp = PWLevel.config.getLong("levels.level"+(playerExpDataManager.getLevel(p)+1));
-            nxetExp = nxetExp*(1+ playerExpDataManager.getPrestige(p));
-            long lastExp = PWLevel.config.getLong("levels.level"+ playerExpDataManager.getLevel(p));
+            long nxetExp = PWLevel.config.getLong("levels.level" + (playerExpDataManager.getLevel(p) + 1));
+            nxetExp = nxetExp * (1 + playerExpDataManager.getPrestige(p));
+            long lastExp = PWLevel.config.getLong("levels.level" + playerExpDataManager.getLevel(p));
             long totalneed = nxetExp - lastExp;
             long thislevelexp = playerExpDataManager.getTotalExp(p) - lastExp;
-            float percent = ((float)thislevelexp / totalneed * 100);
+            float percent = ((float) thislevelexp / totalneed * 100);
             BigDecimal percentBigDecimal = new BigDecimal(percent);
             double percentRounded = percentBigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 
-            return percentRounded+"%";
+            return percentRounded + "%";
         }
 
         return null;

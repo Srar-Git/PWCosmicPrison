@@ -33,7 +33,7 @@ public final class PWItemManager extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
-        if (!setupEconomy() ) {
+        if (!setupEconomy()) {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
@@ -52,15 +52,15 @@ public final class PWItemManager extends JavaPlugin implements Listener {
         reload();
 
 
-        getServer().getPluginManager().registerEvents(new DropListener(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(new OnOreBagAdd(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(new EatListener(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(new ShardMenuEvents(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(new EnchantMenuEvents(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(new RightClickUseItem(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(new OnClickGUI(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(new Orebag(), (Plugin)this);
-        getServer().getPluginManager().registerEvents(this, (Plugin)this);
+        getServer().getPluginManager().registerEvents(new DropListener(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(new OnOreBagAdd(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(new EatListener(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(new ShardMenuEvents(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(new EnchantMenuEvents(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(new RightClickUseItem(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(new OnClickGUI(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(new Orebag(), (Plugin) this);
+        getServer().getPluginManager().registerEvents(this, (Plugin) this);
 
         plugin = this;
         instance = this;
@@ -85,6 +85,7 @@ public final class PWItemManager extends JavaPlugin implements Listener {
     public SkriptAddon getAddonInstance() {
         return addon;
     }
+
     @Override
     public void onDisable() {
 
@@ -115,6 +116,7 @@ public final class PWItemManager extends JavaPlugin implements Listener {
         econ = rsp.getProvider();
         return econ != null;
     }
+
     public static Economy getEconomy() {
         return econ;
     }

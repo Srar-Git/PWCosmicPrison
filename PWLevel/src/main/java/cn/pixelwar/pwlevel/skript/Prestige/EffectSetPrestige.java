@@ -17,11 +17,13 @@ public class EffectSetPrestige extends Effect {
     PlayerOreExpDataManager playerOreExpDataManager = new PlayerOreExpDataManager();
     private Expression<Player> playerin;
     private Expression<Number> prestigein;
+
     static {
-        Skript.registerEffect(EffectSetPrestige.class, new String[] {
+        Skript.registerEffect(EffectSetPrestige.class, new String[]{
                 "setprestige %player% %number%",
         });
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {

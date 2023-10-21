@@ -19,7 +19,8 @@ import java.util.List;
 public class UpdateSlotLore {
 
     NumberFormat numberFormat = new NumberFormat();
-    public void updateSlotEnergy(Player player,int xp, int needXp , int slot){
+
+    public void updateSlotEnergy(Player player, int xp, int needXp, int slot) {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -45,18 +46,19 @@ public class UpdateSlotLore {
                     ItemMeta itemMeta = finalItem.getItemMeta();
                     List<String> lore = itemMeta.getLore();
                     int energyLine = 0;
-                    for (String str : lore){
-                        if (str.contains("| 宇宙能量")){
+                    for (String str : lore) {
+                        if (str.contains("| 宇宙能量")) {
                             break;
-                        }energyLine++;
+                        }
+                        energyLine++;
                     }
-                    lore.set(energyLine+1, ChatColorCast.format(block + " &f&l" + percent + "%"));
-                    lore.set(energyLine+2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
+                    lore.set(energyLine + 1, ChatColorCast.format(block + " &f&l" + percent + "%"));
+                    lore.set(energyLine + 2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
                     itemMeta.setLore(lore);
                     finalItem.setItemMeta(itemMeta);
                     player.getInventory().setItem(slot, finalItem);
                 }
-                if (material.equals(Material.ENCHANTED_BOOK)){
+                if (material.equals(Material.ENCHANTED_BOOK)) {
                     NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
                     PWEnchant enchant = PWEnchant.valueOf(nbti.getString("enchant"));
                     nbti.setInteger("bookxp", xp);
@@ -78,13 +80,14 @@ public class UpdateSlotLore {
                     ItemMeta itemMeta = finalItem.getItemMeta();
                     List<String> lore = itemMeta.getLore();
                     int energyLine = 0;
-                    for (String str : lore){
-                        if (str.contains("| 宇宙能量")){
+                    for (String str : lore) {
+                        if (str.contains("| 宇宙能量")) {
                             break;
-                        }energyLine++;
+                        }
+                        energyLine++;
                     }
-                    lore.set(energyLine+1, ChatColorCast.format(block + " &f&l" + percent + "%"));
-                    lore.set(energyLine+2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
+                    lore.set(energyLine + 1, ChatColorCast.format(block + " &f&l" + percent + "%"));
+                    lore.set(energyLine + 2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
                     itemMeta.setLore(lore);
                     finalItem.setItemMeta(itemMeta);
                     player.getInventory().setItem(slot, finalItem);
@@ -119,13 +122,14 @@ public class UpdateSlotLore {
                     ItemMeta itemMeta = finalItem.getItemMeta();
                     List<String> lore = itemMeta.getLore();
                     int energyLine = 0;
-                    for (String str : lore){
-                        if (str.contains("| 宇宙能量")){
+                    for (String str : lore) {
+                        if (str.contains("| 宇宙能量")) {
                             break;
-                        }energyLine++;
+                        }
+                        energyLine++;
                     }
-                    lore.set(energyLine+1, ChatColorCast.format(block + " &f&l" + percent + "%"));
-                    lore.set(energyLine+2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
+                    lore.set(energyLine + 1, ChatColorCast.format(block + " &f&l" + percent + "%"));
+                    lore.set(energyLine + 2, ChatColorCast.format("&7(&f" + numberFormat.getIntFormat(xp) + " &7/ " + numberFormat.getIntFormat(needXp) + ")"));
                     itemMeta.setLore(lore);
                     finalItem.setItemMeta(itemMeta);
                     player.getInventory().setItem(slot, finalItem);
@@ -134,11 +138,11 @@ public class UpdateSlotLore {
         }.runTask(PWItemManager.getPlugin());
     }
 
-    public void addItemEnergy(Player player,int add, ItemStack itemStack) {
+    public void addItemEnergy(Player player, int add, ItemStack itemStack) {
         NBTItem nbti = new NBTItem(itemStack);
         String uuid = nbti.getString("uuid");
         for (int i = 0; i <= 36; i++) {
-            if (player.getInventory().getItem(i)==null){
+            if (player.getInventory().getItem(i) == null) {
                 continue;
             }
             ItemStack checkItem = player.getInventory().getItem(i);
@@ -156,11 +160,12 @@ public class UpdateSlotLore {
             }
         }
     }
-    public void addPickaxeDig(Player player,int add, ItemStack itemStack) {
+
+    public void addPickaxeDig(Player player, int add, ItemStack itemStack) {
         NBTItem nbti = new NBTItem(itemStack);
         String uuid = nbti.getString("uuid");
         for (int i = 0; i <= 36; i++) {
-            if (player.getInventory().getItem(i)==null){
+            if (player.getInventory().getItem(i) == null) {
                 continue;
             }
             ItemStack checkItem = player.getInventory().getItem(i);
@@ -168,92 +173,99 @@ public class UpdateSlotLore {
                 NBTItem nbt = new NBTItem(checkItem);
                 String checkedUUID = nbt.getString("uuid");
                 if (checkedUUID.equals(uuid)) {
-                        int dig = nbt.getInteger("tooldig");
-                        nbt.setInteger("tooldig", dig+add);
-                        ItemStack nbtDone = nbt.getItem();
-                        ItemMeta itemMeta = nbtDone.getItemMeta();
-                        List<String> lore = itemMeta.getLore();
-                        int digLine = 0;
-                        for (String str : lore){
-                            if (str.contains("已挖掘:")){
-                                break;
-                            }digLine++;
+                    int dig = nbt.getInteger("tooldig");
+                    nbt.setInteger("tooldig", dig + add);
+                    ItemStack nbtDone = nbt.getItem();
+                    ItemMeta itemMeta = nbtDone.getItemMeta();
+                    List<String> lore = itemMeta.getLore();
+                    int digLine = 0;
+                    for (String str : lore) {
+                        if (str.contains("已挖掘:")) {
+                            break;
                         }
-                        lore.set(digLine, ChatColorCast.format("&b▪ &f已挖掘: &e&L"+numberFormat.getIntFormat(dig+add)));
-                        itemMeta.setLore(lore);
-                        nbtDone.setItemMeta(itemMeta);
-                        player.getInventory().setItem(i, nbtDone);
+                        digLine++;
+                    }
+                    lore.set(digLine, ChatColorCast.format("&b▪ &f已挖掘: &e&L" + numberFormat.getIntFormat(dig + add)));
+                    itemMeta.setLore(lore);
+                    nbtDone.setItemMeta(itemMeta);
+                    player.getInventory().setItem(i, nbtDone);
                     return;
                 }
             }
         }
     }
 
-    public void updateBookNum(Player player, int num, int slot){
+    public void updateBookNum(Player player, int num, int slot) {
         NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
         PWEnchant enchant = PWEnchant.valueOf(nbti.getString("enchant"));
-        int s = nbti.getInteger("enchantsuccess")+num;
-        int f = nbti.getInteger("levelfail")-num;
-        if (s>100){s=100;}
-        if (s<0){s=0;}
+        int s = nbti.getInteger("enchantsuccess") + num;
+        int f = nbti.getInteger("levelfail") - num;
+        if (s > 100) {
+            s = 100;
+        }
+        if (s < 0) {
+            s = 0;
+        }
         nbti.setInteger("enchantsuccess", s);
         nbti.setInteger("levelfail", f);
         ItemStack finalItem = nbti.getItem();
         ItemMeta itemMeta = finalItem.getItemMeta();
         List<String> lore = itemMeta.getLore();
         int infoLine = 0;
-        for (String str : lore){
-            if (str.contains("| 几率")){
+        for (String str : lore) {
+            if (str.contains("| 几率")) {
                 break;
-            }infoLine++;
+            }
+            infoLine++;
         }
-        lore.set(infoLine+1, ChatColorCast.format("&b▪ &f附魔成功率: &a&l"+s+"%"));
-        lore.set(infoLine+2, ChatColorCast.format("&b▪ &f升级失败率: &c&l"+f+ "%"));
+        lore.set(infoLine + 1, ChatColorCast.format("&b▪ &f附魔成功率: &a&l" + s + "%"));
+        lore.set(infoLine + 2, ChatColorCast.format("&b▪ &f升级失败率: &c&l" + f + "%"));
         itemMeta.setLore(lore);
         finalItem.setItemMeta(itemMeta);
         player.getInventory().setItem(slot, finalItem);
     }
-    public void addSlotPickaxeGem(Player player, String gem, int slot){
+
+    public void addSlotPickaxeGem(Player player, String gem, int slot) {
         new BukkitRunnable() {
             @Override
             public void run() {
                 NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
                 String gemStr = "";
                 int gems = 0;
-                if (gem.contains("gemenchant")){
-                    nbti.setInteger("gemenchant",1);
+                if (gem.contains("gemenchant")) {
+                    nbti.setInteger("gemenchant", 1);
                 }
-                if (gem.contains("gemprestige0")){
-                    nbti.setInteger("gemprestige0",1);
+                if (gem.contains("gemprestige0")) {
+                    nbti.setInteger("gemprestige0", 1);
                 }
-                if (gem.contains("gemprestige1")){
-                    nbti.setInteger("gemprestige1",1);
+                if (gem.contains("gemprestige1")) {
+                    nbti.setInteger("gemprestige1", 1);
                 }
-                if (gem.contains("gemdeath")){
-                    nbti.setInteger("gemdeath",1);
+                if (gem.contains("gemdeath")) {
+                    nbti.setInteger("gemdeath", 1);
                 }
-                if (gem.contains("gemcharge")){
-                    nbti.setInteger("gemcharge", nbti.getInteger("gemcharge")+1);
+                if (gem.contains("gemcharge")) {
+                    nbti.setInteger("gemcharge", nbti.getInteger("gemcharge") + 1);
                 }
-                if (nbti.getInteger("gemenchant")==1){
+                if (nbti.getInteger("gemenchant") == 1) {
                     gemStr = gemStr.concat(" &a❃");
                     gems++;
                 }
-                if (nbti.getInteger("gemcharge")>=1){
-                    for (int i=1;i<=nbti.getInteger("gemcharge");i++){
+                if (nbti.getInteger("gemcharge") >= 1) {
+                    for (int i = 1; i <= nbti.getInteger("gemcharge"); i++) {
                         gemStr = gemStr.concat(" &6☢");
                         gems++;
                     }
                 }
-                if (nbti.getInteger("gemdeath")==1){
+                if (nbti.getInteger("gemdeath") == 1) {
                     gemStr = gemStr.concat(" &b☠");
                     gems++;
                 }
-                if (nbti.getInteger("gemprestige1")==1){
+                if (nbti.getInteger("gemprestige1") == 1) {
                     gemStr = gemStr.concat(" &d✪");
                     gems++;
                 }
-                if (nbti.getInteger("gemprestige0")==1){
+                if (nbti.getInteger("gemprestige0") == 1) {
                     gemStr = gemStr.concat(" &e✪");
                     gems++;
                 }
@@ -263,143 +275,13 @@ public class UpdateSlotLore {
                 ItemMeta itemMeta = finalItem.getItemMeta();
                 List<String> lore = itemMeta.getLore();
                 int infoLine = 0;
-                for (String str : lore){
-                    if (str.contains("| 工具信息")){
+                for (String str : lore) {
+                    if (str.contains("| 工具信息")) {
                         break;
-                    }infoLine++;
-                }
-                lore.set(infoLine+3, ChatColorCast.format("&b▪ &f宝石&7("+gems+"/"+maxgem+"):"+gemStr));
-                itemMeta.setLore(lore);
-                finalItem.setItemMeta(itemMeta);
-                player.getInventory().setItem(slot, finalItem);
-            }
-        }.runTask(PWItemManager.getPlugin());
-    }
-    public void removeSlotPickaxeGem(Player player, String gem, int slot){
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
-                String gemStr = "";
-                int gems = 0;
-                if (gem.contains("gemenchant")){
-                    nbti.removeKey("gemenchant");
-                }
-                if (gem.contains("gemdeath")){
-                    nbti.removeKey("gemdeath");
-                }
-                if (gem.contains("gemprestige0")){
-                    nbti.removeKey("gemprestige0");
-                }
-                if (gem.contains("gemprestige1")){
-                    nbti.removeKey("gemprestige1");
-                }
-                if (nbti.getInteger("gemenchant")==1){
-                    gemStr = gemStr.concat(" &a❃");
-                    gems++;
-                }
-                if (nbti.getInteger("gemcharge")>=1){
-                    for (int i=1;i<=nbti.getInteger("gemcharge");i++){
-                        gemStr = gemStr.concat(" &6☢");
-                        gems++;
                     }
+                    infoLine++;
                 }
-                if (nbti.getInteger("gemdeath")==1){
-                    gemStr = gemStr.concat(" &b☠");
-                    gems++;
-                }
-                if (nbti.getInteger("gemprestige1")==1){
-                    gemStr = gemStr.concat(" &d✪");
-                    gems++;
-                }
-                if (nbti.getInteger("gemprestige0")==1){
-                    gemStr = gemStr.concat(" &e✪");
-                    gems++;
-                }
-                if (gemStr.equals("")){
-                    gemStr = " &c&l✖";
-                }
-                int maxgem = nbti.getInteger("maxgem");
-                nbti.setInteger("gem", gems);
-                ItemStack finalItem = nbti.getItem();
-                ItemMeta itemMeta = finalItem.getItemMeta();
-                List<String> lore = itemMeta.getLore();
-                int infoLine = 0;
-                for (String str : lore){
-                    if (str.contains("| 工具信息")){
-                        break;
-                    }infoLine++;
-                }
-                lore.set(infoLine+3, ChatColorCast.format("&b▪ &f宝石&7("+gems+"/"+maxgem+"):"+gemStr));
-                itemMeta.setLore(lore);
-                finalItem.setItemMeta(itemMeta);
-                player.getInventory().setItem(slot, finalItem);
-            }
-        }.runTask(PWItemManager.getPlugin());
-    }
-    public void addSlotBagGem(Player player, String gem, int slot){
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
-                String gemStr = "";
-                int gems = 0;
-                if (gem.contains("gemenchant")){
-                    nbti.setInteger("gemenchant",1);
-                }
-                if (gem.contains("gemdeath")){
-                    nbti.setInteger("gemdeath",1);
-                }
-                if (nbti.getInteger("gemenchant")==1){
-                    gemStr = gemStr.concat(" &a❃");
-                    gems++;
-                }
-                if (nbti.getInteger("gemdeath")==1){
-                    gemStr = gemStr.concat(" &b☠");
-                    gems++;
-                }
-                int maxgem = nbti.getInteger("maxgem");
-                nbti.setInteger("gem", gems);
-                ItemStack finalItem = nbti.getItem();
-                ItemMeta itemMeta = finalItem.getItemMeta();
-                List<String> lore = itemMeta.getLore();
-                lore.set(6, ChatColorCast.format("&b▪ &f宝石&7("+gems+"/"+maxgem+"):"+gemStr));
-                itemMeta.setLore(lore);
-                finalItem.setItemMeta(itemMeta);
-                player.getInventory().setItem(slot, finalItem);
-            }
-        }.runTask(PWItemManager.getPlugin());
-    }
-    public void removeSlotBagGem(Player player, String gem, int slot){
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
-                String gemStr = "";
-                int gems = 0;
-                if (gem.contains("gemenchant")){
-                    nbti.setInteger("gemenchant",0);
-                }
-                if (gem.contains("gemdeath")){
-                    nbti.setInteger("gemdeath",0);
-                }
-                if (nbti.getInteger("gemenchant")==1){
-                    gemStr = gemStr.concat(" &a❃");
-                    gems++;
-                }
-                if (nbti.getInteger("gemdeath")==1){
-                    gemStr = gemStr.concat(" &b☠");
-                    gems++;
-                }
-                if (gemStr.equals("")){
-                    gemStr = " &c&l✖";
-                }
-                int maxgem = nbti.getInteger("maxgem");
-                nbti.setInteger("gem", gems);
-                ItemStack finalItem = nbti.getItem();
-                ItemMeta itemMeta = finalItem.getItemMeta();
-                List<String> lore = itemMeta.getLore();
-                lore.set(6, ChatColorCast.format("&b▪ &f宝石&7("+gems+"/"+maxgem+"):"+gemStr));
+                lore.set(infoLine + 3, ChatColorCast.format("&b▪ &f宝石&7(" + gems + "/" + maxgem + "):" + gemStr));
                 itemMeta.setLore(lore);
                 finalItem.setItemMeta(itemMeta);
                 player.getInventory().setItem(slot, finalItem);
@@ -407,14 +289,149 @@ public class UpdateSlotLore {
         }.runTask(PWItemManager.getPlugin());
     }
 
-    public void setBagSize(Player player,int size, int slot) {
+    public void removeSlotPickaxeGem(Player player, String gem, int slot) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
+                String gemStr = "";
+                int gems = 0;
+                if (gem.contains("gemenchant")) {
+                    nbti.removeKey("gemenchant");
+                }
+                if (gem.contains("gemdeath")) {
+                    nbti.removeKey("gemdeath");
+                }
+                if (gem.contains("gemprestige0")) {
+                    nbti.removeKey("gemprestige0");
+                }
+                if (gem.contains("gemprestige1")) {
+                    nbti.removeKey("gemprestige1");
+                }
+                if (nbti.getInteger("gemenchant") == 1) {
+                    gemStr = gemStr.concat(" &a❃");
+                    gems++;
+                }
+                if (nbti.getInteger("gemcharge") >= 1) {
+                    for (int i = 1; i <= nbti.getInteger("gemcharge"); i++) {
+                        gemStr = gemStr.concat(" &6☢");
+                        gems++;
+                    }
+                }
+                if (nbti.getInteger("gemdeath") == 1) {
+                    gemStr = gemStr.concat(" &b☠");
+                    gems++;
+                }
+                if (nbti.getInteger("gemprestige1") == 1) {
+                    gemStr = gemStr.concat(" &d✪");
+                    gems++;
+                }
+                if (nbti.getInteger("gemprestige0") == 1) {
+                    gemStr = gemStr.concat(" &e✪");
+                    gems++;
+                }
+                if (gemStr.equals("")) {
+                    gemStr = " &c&l✖";
+                }
+                int maxgem = nbti.getInteger("maxgem");
+                nbti.setInteger("gem", gems);
+                ItemStack finalItem = nbti.getItem();
+                ItemMeta itemMeta = finalItem.getItemMeta();
+                List<String> lore = itemMeta.getLore();
+                int infoLine = 0;
+                for (String str : lore) {
+                    if (str.contains("| 工具信息")) {
+                        break;
+                    }
+                    infoLine++;
+                }
+                lore.set(infoLine + 3, ChatColorCast.format("&b▪ &f宝石&7(" + gems + "/" + maxgem + "):" + gemStr));
+                itemMeta.setLore(lore);
+                finalItem.setItemMeta(itemMeta);
+                player.getInventory().setItem(slot, finalItem);
+            }
+        }.runTask(PWItemManager.getPlugin());
+    }
+
+    public void addSlotBagGem(Player player, String gem, int slot) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
+                String gemStr = "";
+                int gems = 0;
+                if (gem.contains("gemenchant")) {
+                    nbti.setInteger("gemenchant", 1);
+                }
+                if (gem.contains("gemdeath")) {
+                    nbti.setInteger("gemdeath", 1);
+                }
+                if (nbti.getInteger("gemenchant") == 1) {
+                    gemStr = gemStr.concat(" &a❃");
+                    gems++;
+                }
+                if (nbti.getInteger("gemdeath") == 1) {
+                    gemStr = gemStr.concat(" &b☠");
+                    gems++;
+                }
+                int maxgem = nbti.getInteger("maxgem");
+                nbti.setInteger("gem", gems);
+                ItemStack finalItem = nbti.getItem();
+                ItemMeta itemMeta = finalItem.getItemMeta();
+                List<String> lore = itemMeta.getLore();
+                lore.set(6, ChatColorCast.format("&b▪ &f宝石&7(" + gems + "/" + maxgem + "):" + gemStr));
+                itemMeta.setLore(lore);
+                finalItem.setItemMeta(itemMeta);
+                player.getInventory().setItem(slot, finalItem);
+            }
+        }.runTask(PWItemManager.getPlugin());
+    }
+
+    public void removeSlotBagGem(Player player, String gem, int slot) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                NBTItem nbti = new NBTItem(player.getInventory().getItem(slot));
+                String gemStr = "";
+                int gems = 0;
+                if (gem.contains("gemenchant")) {
+                    nbti.setInteger("gemenchant", 0);
+                }
+                if (gem.contains("gemdeath")) {
+                    nbti.setInteger("gemdeath", 0);
+                }
+                if (nbti.getInteger("gemenchant") == 1) {
+                    gemStr = gemStr.concat(" &a❃");
+                    gems++;
+                }
+                if (nbti.getInteger("gemdeath") == 1) {
+                    gemStr = gemStr.concat(" &b☠");
+                    gems++;
+                }
+                if (gemStr.equals("")) {
+                    gemStr = " &c&l✖";
+                }
+                int maxgem = nbti.getInteger("maxgem");
+                nbti.setInteger("gem", gems);
+                ItemStack finalItem = nbti.getItem();
+                ItemMeta itemMeta = finalItem.getItemMeta();
+                List<String> lore = itemMeta.getLore();
+                lore.set(6, ChatColorCast.format("&b▪ &f宝石&7(" + gems + "/" + maxgem + "):" + gemStr));
+                itemMeta.setLore(lore);
+                finalItem.setItemMeta(itemMeta);
+                player.getInventory().setItem(slot, finalItem);
+            }
+        }.runTask(PWItemManager.getPlugin());
+    }
+
+    public void setBagSize(Player player, int size, int slot) {
         ItemStack item = player.getInventory().getItem(slot);
         NBTItem nbtItem = new NBTItem(item);
         if (nbtItem.hasKey("size")) {
             //取出size内的矿物
             String bagType = nbtItem.getString("materialname");
             int maxSize = nbtItem.getInteger("maxsize");
-            if (size>maxSize){
+            if (size > maxSize) {
                 size = maxSize;
             }
             nbtItem.setInteger("size", size);
@@ -428,10 +445,10 @@ public class UpdateSlotLore {
                 }
                 info++;
             }
-            lore.set(info + 1, ChatColorCast.format("&b▪ &f存储" + bagType + ": &b"+  numberFormat.getIntFormat(size)  +"/"+numberFormat.getIntFormat(maxSize)));
+            lore.set(info + 1, ChatColorCast.format("&b▪ &f存储" + bagType + ": &b" + numberFormat.getIntFormat(size) + "/" + numberFormat.getIntFormat(maxSize)));
             itemMeta.setLore(lore);
             item.setItemMeta(itemMeta);
-            player.getInventory().setItem(slot,item);
+            player.getInventory().setItem(slot, item);
         }
     }
 

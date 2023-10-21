@@ -19,7 +19,6 @@ public class PlayerExpBoosterData {
     }
 
 
-
     public void setExpMultiple(double expMultiple) {
         ExpMultiple = expMultiple;
     }

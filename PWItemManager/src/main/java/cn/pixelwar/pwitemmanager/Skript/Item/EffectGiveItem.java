@@ -57,8 +57,8 @@ public class EffectGiveItem extends Effect {
                 Object o = arrayOfObject[b1];
 
                 for (ItemStack is : ((ItemType) o).getItem().getAll()) {
-                    if (is.getType() != Material.AIR){
-                            GiveAndDropItem.giveItem(owner, is);
+                    if (is.getType() != Material.AIR) {
+                        GiveAndDropItem.giveItem(owner, is);
                     }
                     b1++;
                 }

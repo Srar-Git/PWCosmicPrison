@@ -19,7 +19,6 @@ public class PlayerEnergyBoosterData {
     }
 
 
-
     public void setEnergyMultiple(double energyMultiple) {
         EnergyMultiple = energyMultiple;
     }

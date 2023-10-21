@@ -19,7 +19,7 @@ import static java.util.Arrays.asList;
 
 public class Menu {
 
-    public void openMainMenu(Player player){
+    public void openMainMenu(Player player) {
         Inventory gui = Bukkit.createInventory(player, 54, "镐荣誉/引擎装配");
 
         ItemStack white = getButton(
@@ -63,21 +63,20 @@ public class Menu {
                 ),
                 false
         );
-        for (int i = 0; i<54;i++){
+        for (int i = 0; i < 54; i++) {
             gui.setItem(i, back);
         }
-        gui.setItem(4,paper);
-        gui.setItem(22,white);
+        gui.setItem(4, paper);
+        gui.setItem(22, white);
 
 
         player.openInventory(gui);
         player.playSound(player.getEyeLocation(), Sound.UI_BUTTON_CLICK, 1f, 2.0f);
 
 
-
     }
 
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow){
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);
@@ -96,7 +95,7 @@ public class Menu {
         return item;
     }
 
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, String nbtPath, String nbt, String nbtPath2, int nbtint){
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, String nbtPath, String nbt, String nbtPath2, int nbtint) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);

@@ -16,17 +16,21 @@ import javax.annotation.Nullable;
 public class ExpGetStringNBT extends SimpleExpression<String> {
     private Expression<ItemType> itemin;
     private Expression<String> pathin;
+
     static {
         Skript.registerExpression(ExpGetStringNBT.class, String.class, ExpressionType.SIMPLE, new String[]{"stringtag %string% of nbt of %itemtypes%"});
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
@@ -34,6 +38,7 @@ public class ExpGetStringNBT extends SimpleExpression<String> {
         this.itemin = (Expression<ItemType>) expressions[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event event, boolean debug) {
         return null;
@@ -46,7 +51,7 @@ public class ExpGetStringNBT extends SimpleExpression<String> {
         String path = pathin.getSingle(event);
         ItemType itemType = itemin.getSingle(event);
         ItemStack item = itemType.getRandom();
-        return new String[] {getItemNBT.getItemStringNBT(item, path)};
+        return new String[]{getItemNBT.getItemStringNBT(item, path)};
     }
 
 }

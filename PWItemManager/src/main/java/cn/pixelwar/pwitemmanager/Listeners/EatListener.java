@@ -15,43 +15,42 @@ import java.util.Map;
 public class EatListener implements Listener {
 
 
-
     @EventHandler
     public void onEat(PlayerItemConsumeEvent event) {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
 
-        if (item.getType().equals(Material.COOKIE)){
+        if (item.getType().equals(Material.COOKIE)) {
             player.setFoodLevel(20);
             player.setSaturation(1.65f);
             return;
         }
-        if (item.getType().equals(Material.APPLE)){
+        if (item.getType().equals(Material.APPLE)) {
             player.setFoodLevel(20);
             player.setSaturation(3.33f);
             return;
         }
-        if (item.getType().equals(Material.BREAD)){
+        if (item.getType().equals(Material.BREAD)) {
             player.setFoodLevel(20);
             player.setSaturation(8.5f);
             return;
         }
-        if (item.getType().equals(Material.PUMPKIN_PIE)){
+        if (item.getType().equals(Material.PUMPKIN_PIE)) {
             player.setFoodLevel(20);
             player.setSaturation(6.4f);
             return;
         }
-        if (item.getType().equals(Material.COOKED_CHICKEN)){
+        if (item.getType().equals(Material.COOKED_CHICKEN)) {
             player.setFoodLevel(20);
             player.setSaturation(11.3f);
             return;
         }
-        if (item.getType().equals(Material.COOKED_BEEF)){
+        if (item.getType().equals(Material.COOKED_BEEF)) {
             player.setFoodLevel(20);
             player.setSaturation(15f);
             return;
         }
-        if (item.getType().equals(Material.GOLDEN_CARROT)){
+        if (item.getType().equals(Material.GOLDEN_CARROT)) {
             player.setFoodLevel(20);
             player.setSaturation(20f);
             return;

@@ -41,10 +41,11 @@ public class EnchantMenuEvents implements Listener {
     UpdateHandLore updateHandLore = new UpdateHandLore();
     private static final HashMap<Player, Boolean> down = new HashMap<>();
     private static final HashMap<Player, Boolean> ifFirst = new HashMap<>();
+
     @EventHandler
     public void onClickEnchantMenu(InventoryClickEvent event) {
 
-        if (event.getClickedInventory() == null){
+        if (event.getClickedInventory() == null) {
             return;
         }
         if (event.getView().getTitle().contains("附魔池")) {
@@ -55,12 +56,12 @@ public class EnchantMenuEvents implements Listener {
                 player.playSound(player.getEyeLocation(), Sound.UI_BUTTON_CLICK, SoundCategory.BLOCKS, 1.0f, 2.0f);
                 ItemStack item = viewInventory.getItem(22);
                 ItemStack click = event.getCurrentItem();
-                if (click.getType().toString().contains("PANE") || click.getType().toString().contains("BARRIER")){
+                if (click.getType().toString().contains("PANE") || click.getType().toString().contains("BARRIER")) {
                     return;
                 }
                 int enchantSlot = IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTSLOTS);
                 //是镐
-                if (item.getType().toString().contains("PICKAXE")){
+                if (item.getType().toString().contains("PICKAXE")) {
                     NBTItem nbtItem = new NBTItem(item);
                     int toollevel = nbtItem.getInteger("toollevel");
                     ItemMeta itemMeta = item.getItemMeta();
@@ -77,11 +78,10 @@ public class EnchantMenuEvents implements Listener {
                     Arrays.sort(obj);
 
                     int biggestEnchant;
-                    if (obj.length==0){
+                    if (obj.length == 0) {
                         biggestEnchant = 1;
-                    }
-                    else{
-                        biggestEnchant = (int)obj[obj.length-1];
+                    } else {
+                        biggestEnchant = (int) obj[obj.length - 1];
                     }
                     HashMap<PWEnchant, Integer> enchantChanceMap = new HashMap<>();
                     List<PWEnchant> tier1 = new ArrayList<>();
@@ -91,10 +91,10 @@ public class EnchantMenuEvents implements Listener {
                     List<PWEnchant> tier5 = new ArrayList<>();
 
                     for (PWEnchant PWEnchant : PWEnchant.values()) {
-                        if (!(PWEnchant.getType().equals("镐"))){
+                        if (!(PWEnchant.getType().equals("镐"))) {
                             continue;
                         }
-                        if (PWEnchant.getRank()>=6){
+                        if (PWEnchant.getRank() >= 6) {
                             continue;
                         }
                         if (!(enchantHasMap.containsKey(PWEnchant))) {
@@ -116,11 +116,11 @@ public class EnchantMenuEvents implements Listener {
                             }
                         }
 
-                        if (enchantHasMap.containsKey(PWEnchant)){
-                            if (enchantHasMap.get(PWEnchant)< PWEnchant.getMaxLevel()+1){
-                                int chance = getChance(enchantHasMap.get(PWEnchant),biggestEnchant, toollevel)-(PWEnchant.getRank()*2);
-                                if (chance<=0){
-                                    chance = getRandomInt(2,8);
+                        if (enchantHasMap.containsKey(PWEnchant)) {
+                            if (enchantHasMap.get(PWEnchant) < PWEnchant.getMaxLevel() + 1) {
+                                int chance = getChance(enchantHasMap.get(PWEnchant), biggestEnchant, toollevel) - (PWEnchant.getRank() * 2);
+                                if (chance <= 0) {
+                                    chance = getRandomInt(2, 8);
                                 }
                                 enchantChanceMap.put(PWEnchant, chance);
                                 if (PWEnchant.getRank() == 1) {
@@ -142,18 +142,18 @@ public class EnchantMenuEvents implements Listener {
                         }
 
                     }
-                    if (click.getType().equals(Material.TURTLE_EGG) && event.getSlot()==49) {
+                    if (click.getType().equals(Material.TURTLE_EGG) && event.getSlot() == 49) {
 
-                        if (ifFirst.containsKey(player)){
+                        if (ifFirst.containsKey(player)) {
                             IntDataManager.IntDataMap.get(player.getName()).singleMap.put(
                                     IntDataType.ENCHANTREROLL,
-                                    IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)-1
-                                    );
+                                    IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL) - 1
+                            );
                         }
-                        down.put(player,false);
-                        int[] enslots = {3,4,5,11,15,19,25,29,33,39,41,40};
+                        down.put(player, false);
+                        int[] enslots = {3, 4, 5, 11, 15, 19, 25, 29, 33, 39, 41, 40};
                         List<Integer> greenSlots = new ArrayList<>();
-                        for (int i = 0; i < enchantSlot; i++){
+                        for (int i = 0; i < enchantSlot; i++) {
                             greenSlots.add(enslots[i]);
                         }
                         ItemStack green = getButton(
@@ -165,12 +165,12 @@ public class EnchantMenuEvents implements Listener {
                                 ),
                                 false
                         );
-                        for (int i = 0; i < 54; i++){
+                        for (int i = 0; i < 54; i++) {
                             if (greenSlots.contains(i))
                                 viewInventory.setItem(i, green);
                         }
 
-                        if (enchantChanceMap.size()<1){
+                        if (enchantChanceMap.size() < 1) {
                             ItemStack barrier = enchantMenu.getButton(
                                     Material.BARRIER,
                                     ChatColorCast.format("&c&l你已经拥有所有附魔"),
@@ -216,7 +216,7 @@ public class EnchantMenuEvents implements Listener {
 
                             @Override
                             public void run() {
-                                if (!(player.getOpenInventory().getTitle().contains("附魔池"))){
+                                if (!(player.getOpenInventory().getTitle().contains("附魔池"))) {
                                     cancel();
                                     return;
                                 }
@@ -239,9 +239,10 @@ public class EnchantMenuEvents implements Listener {
                         for (int s : slots) {
                             new BukkitRunnable() {
                                 int i = 0;
+
                                 @Override
                                 public void run() {
-                                    if (!(player.getOpenInventory().getTitle().contains("附魔池"))){
+                                    if (!(player.getOpenInventory().getTitle().contains("附魔池"))) {
                                         cancel();
                                         return;
                                     }
@@ -249,7 +250,7 @@ public class EnchantMenuEvents implements Listener {
 
                                     int rank = enchant.getRank();
                                     int addChance = 0;
-                                    switch (rank){
+                                    switch (rank) {
                                         case 1:
                                             addChance = rank1Num;
                                             break;
@@ -268,25 +269,25 @@ public class EnchantMenuEvents implements Listener {
                                         default:
                                             break;
                                     }
-                                    List <String> buttonLore = new ArrayList<>();
+                                    List<String> buttonLore = new ArrayList<>();
                                     buttonLore.add(" ");
-                                    for (String s : enchant.getDescription()){
+                                    for (String s : enchant.getDescription()) {
                                         buttonLore.add(s);
                                     }
                                     buttonLore.add(" ");
-                                    if (addChance>0){
-                                        buttonLore.add(ChatColorCast.format("&b▪ &f成功率: &a&l" + enchantChanceMap.get(enchant) + "% &7(&e+"+addChance+"%&7)"));
-                                        buttonLore.add(ChatColorCast.format("&b▪ &f失败率: &c&l" + (100 - enchantChanceMap.get(enchant)) + "% &7(&e-"+addChance+"%&7)"));
-                                    }else{
+                                    if (addChance > 0) {
+                                        buttonLore.add(ChatColorCast.format("&b▪ &f成功率: &a&l" + enchantChanceMap.get(enchant) + "% &7(&e+" + addChance + "%&7)"));
+                                        buttonLore.add(ChatColorCast.format("&b▪ &f失败率: &c&l" + (100 - enchantChanceMap.get(enchant)) + "% &7(&e-" + addChance + "%&7)"));
+                                    } else {
                                         buttonLore.add(ChatColorCast.format("&b▪ &f成功率: &a&l" + enchantChanceMap.get(enchant) + "%"));
                                         buttonLore.add(ChatColorCast.format("&b▪ &f失败率: &c&l" + (100 - enchantChanceMap.get(enchant)) + "%"));
                                     }
 
                                     buttonLore.add(" ");
                                     buttonLore.add(ChatColorCast.format("&a&l点击&7选择该附魔"));
-                                    int totalChance = enchantChanceMap.get(enchant)+addChance;
-                                    if (totalChance>100){
-                                        totalChance=100;
+                                    int totalChance = enchantChanceMap.get(enchant) + addChance;
+                                    if (totalChance > 100) {
+                                        totalChance = 100;
                                     }
                                     ItemStack button = enchantMenu.getButton(
                                             enchant.getItem(),
@@ -311,7 +312,7 @@ public class EnchantMenuEvents implements Listener {
                         new BukkitRunnable() {
                             @Override
                             public void run() {
-                                if (IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)>0){
+                                if (IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL) > 0) {
                                     ItemStack roll_enchant = getButton(
                                             Material.TURTLE_EGG,
                                             ChatColorCast.format("&6&l开始抽取附魔"),
@@ -321,7 +322,7 @@ public class EnchantMenuEvents implements Listener {
                                                     ChatColorCast.format("&7相应附魔，你可以选取其中&b&l1个&7进行附魔"),
                                                     ChatColorCast.format("&7抽取完后若没有满意的附魔，你可以重新抽取"),
                                                     ChatColorCast.format(" "),
-                                                    ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l"+IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)),
+                                                    ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l" + IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)),
                                                     ChatColorCast.format(" "),
                                                     ChatColorCast.format("&6&l点击&7开始抽取附魔")
                                             ),
@@ -344,24 +345,23 @@ public class EnchantMenuEvents implements Listener {
                                             true
                                     );
                                     NBTItem nbtDust = new NBTItem(dust);
-                                    nbtDust.setInteger("rank1",0);
-                                    nbtDust.setInteger("rank2",0);
-                                    nbtDust.setInteger("rank3",0);
-                                    nbtDust.setInteger("rank4",0);
-                                    nbtDust.setInteger("rank5",0);
+                                    nbtDust.setInteger("rank1", 0);
+                                    nbtDust.setInteger("rank2", 0);
+                                    nbtDust.setInteger("rank3", 0);
+                                    nbtDust.setInteger("rank4", 0);
+                                    nbtDust.setInteger("rank5", 0);
                                     dust = nbtDust.getItem();
-                                    viewInventory.setItem(8,dust);
+                                    viewInventory.setItem(8, dust);
                                     viewInventory.setItem(49, roll_enchant);
                                     down.remove(player);
                                 }
                             }
                         }.runTaskLaterAsynchronously(PWItemManager.getPlugin(), 60l);
                         return;
-                    }
-                    else {
+                    } else {
                         if (down.containsKey(player) && down.get(player)) {
                             NBTItem nbtItem2 = new NBTItem(click);
-                            if(nbtItem2.hasKey("enchant")) {
+                            if (nbtItem2.hasKey("enchant")) {
                                 PWEnchant enchant = PWEnchant.valueOf(nbtItem2.getString("enchant"));
                                 int level = nbtItem2.getInteger("level");
                                 int success = nbtItem2.getInteger("success");
@@ -375,48 +375,37 @@ public class EnchantMenuEvents implements Listener {
                     }
 
 
-
-
-
-
-
-
-
-
-
-
-
                 }
                 //是附魔书
-                if (item.getType().equals(Material.ENCHANTED_BOOK)){
+                if (item.getType().equals(Material.ENCHANTED_BOOK)) {
                     if (click.getType().equals(Material.FIREWORK_ROCKET) && event.getSlot() == 49) {
                         NBTItem nbtItem = new NBTItem(item);
                         int fail = nbtItem.getInteger("levelfail");
                         PWEnchant pwEnchant = PWEnchant.valueOf(nbtItem.getString("enchant"));
-                        int num = fail/7;
-                        if (num<=0){
-                            num=1;
+                        int num = fail / 7;
+                        if (num <= 0) {
+                            num = 1;
                         }
-                        int r  = random.nextInt(100);
-                        if (r<=fail){ //失败
+                        int r = random.nextInt(100);
+                        if (r <= fail) { //失败
                             player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
                             ItemStack q = getItem.getEnchantPage(pwEnchant.getRank(), num);
-                            GiveAndDropItem.giveItem(player,q);
+                            GiveAndDropItem.giveItem(player, q);
                             PacketText packetText = new PacketText();
-                            packetText.createEnchantText(player, player.getItemInHand(),ChatColorCast.format("&c&l升级失败!"));
+                            packetText.createEnchantText(player, player.getItemInHand(), ChatColorCast.format("&c&l升级失败!"));
                             player.sendMessage("");
-                            player.sendMessage(ChatColorCast.format("&c▸ 你的附魔书升级失败，你获得了 "+q.getItemMeta().getDisplayName()));
+                            player.sendMessage(ChatColorCast.format("&c▸ 你的附魔书升级失败，你获得了 " + q.getItemMeta().getDisplayName()));
                             player.sendMessage("");
-                        }else { //成功
+                        } else { //成功
 
-                            int f = getRandomInt(30,100);
+                            int f = getRandomInt(30, 100);
                             ItemStack newbook = getItem.getEnchantBook(nbtItem.getString("enchant"),
                                     nbtItem.getInteger("booklevel") + 1,
                                     nbtItem.getInteger("enchantsuccess"),
                                     f);
                             player.getInventory().setItemInMainHand(newbook);
                             PacketText packetText = new PacketText();
-                            packetText.createEnchantText(player, player.getItemInHand(), ChatColorCast.format("&d&l升级成功 &b▸ ")+ pwEnchant.getRankColor()+ pwEnchant.getChineseName()+ChatColorCast.format(" &b&l")+getLevel(nbtItem.getInteger("booklevel") + 1));
+                            packetText.createEnchantText(player, player.getItemInHand(), ChatColorCast.format("&d&l升级成功 &b▸ ") + pwEnchant.getRankColor() + pwEnchant.getChineseName() + ChatColorCast.format(" &b&l") + getLevel(nbtItem.getInteger("booklevel") + 1));
 
                         }
                     }
@@ -433,7 +422,7 @@ public class EnchantMenuEvents implements Listener {
                                 item.getType().equals(Material.GOLD_INGOT) || item.getType().equals(Material.GOLD_ORE) ||
                                 item.getType().equals(Material.DIAMOND) || item.getType().equals(Material.DIAMOND_ORE) ||
                                 item.getType().equals(Material.EMERALD) || item.getType().equals(Material.EMERALD_ORE)
-                ){
+                ) {
                     if (click.getType().equals(Material.FIREWORK_ROCKET) && event.getSlot() == 50) {
                         ApplyEnchantToBag applyEnchantToBag = new ApplyEnchantToBag();
                         applyEnchantToBag.levelUp(player);
@@ -441,16 +430,16 @@ public class EnchantMenuEvents implements Listener {
                         return;
                     }
                     if (click.getType().equals(Material.TURTLE_EGG) && event.getSlot() == 48) {
-                        if (ifFirst.containsKey(player)){
+                        if (ifFirst.containsKey(player)) {
                             IntDataManager.IntDataMap.get(player.getName()).singleMap.put(
                                     IntDataType.ENCHANTREROLL,
-                                    IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)-1
+                                    IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL) - 1
                             );
                         }
-                        down.put(player,false);
-                        int[] enslots = {3,4,5,11,15,19,25,29,33,39,41,40};
+                        down.put(player, false);
+                        int[] enslots = {3, 4, 5, 11, 15, 19, 25, 29, 33, 39, 41, 40};
                         List<Integer> greenSlots = new ArrayList<>();
-                        for (int i = 0; i < enchantSlot; i++){
+                        for (int i = 0; i < enchantSlot; i++) {
                             greenSlots.add(enslots[i]);
                         }
                         ItemStack green = getButton(
@@ -462,7 +451,7 @@ public class EnchantMenuEvents implements Listener {
                                 ),
                                 false
                         );
-                        for (int i = 0; i < 54; i++){
+                        for (int i = 0; i < 54; i++) {
                             if (greenSlots.contains(i))
                                 viewInventory.setItem(i, green);
                         }
@@ -483,11 +472,10 @@ public class EnchantMenuEvents implements Listener {
                         Arrays.sort(obj);
 
                         int biggestEnchant;
-                        if (obj.length==0){
+                        if (obj.length == 0) {
                             biggestEnchant = 1;
-                        }
-                        else{
-                            biggestEnchant = (int)obj[obj.length-1];
+                        } else {
+                            biggestEnchant = (int) obj[obj.length - 1];
                         }
                         HashMap<PWEnchant, Integer> enchantChanceMap = new HashMap<>();
                         List<PWEnchant> tier1 = new ArrayList<>();
@@ -497,10 +485,10 @@ public class EnchantMenuEvents implements Listener {
                         List<PWEnchant> tier5 = new ArrayList<>();
 
                         for (PWEnchant PWEnchant : PWEnchant.values()) {
-                            if (!(PWEnchant.getType().equals("矿物存储箱"))){
+                            if (!(PWEnchant.getType().equals("矿物存储箱"))) {
                                 continue;
                             }
-                            if (PWEnchant.getRank()>=6){
+                            if (PWEnchant.getRank() >= 6) {
                                 continue;
                             }
                             if (!(enchantHasMap.containsKey(PWEnchant))) {
@@ -522,11 +510,11 @@ public class EnchantMenuEvents implements Listener {
                                 }
                             }
 
-                            if (enchantHasMap.containsKey(PWEnchant)){
-                                if (enchantHasMap.get(PWEnchant)< PWEnchant.getMaxLevel()+1){
-                                    int chance = getChance(enchantHasMap.get(PWEnchant),biggestEnchant, baglevel)-(PWEnchant.getRank()*2);
-                                    if (chance<=0){
-                                        chance = getRandomInt(2,8);
+                            if (enchantHasMap.containsKey(PWEnchant)) {
+                                if (enchantHasMap.get(PWEnchant) < PWEnchant.getMaxLevel() + 1) {
+                                    int chance = getChance(enchantHasMap.get(PWEnchant), biggestEnchant, baglevel) - (PWEnchant.getRank() * 2);
+                                    if (chance <= 0) {
+                                        chance = getRandomInt(2, 8);
                                     }
                                     enchantChanceMap.put(PWEnchant, chance);
                                     if (PWEnchant.getRank() == 1) {
@@ -548,7 +536,7 @@ public class EnchantMenuEvents implements Listener {
                             }
 
                         }
-                        if (enchantChanceMap.size()<1){
+                        if (enchantChanceMap.size() < 1) {
                             ItemStack barrier = enchantMenu.getButton(
                                     Material.BARRIER,
                                     ChatColorCast.format("&c&l你已经拥有所有附魔"),
@@ -596,7 +584,7 @@ public class EnchantMenuEvents implements Listener {
 
                             @Override
                             public void run() {
-                                if (!(player.getOpenInventory().getTitle().contains("附魔池"))){
+                                if (!(player.getOpenInventory().getTitle().contains("附魔池"))) {
                                     cancel();
                                     return;
                                 }
@@ -623,7 +611,7 @@ public class EnchantMenuEvents implements Listener {
                                 @Override
                                 public void run() {
 
-                                    if (!(player.getOpenInventory().getTitle().contains("附魔池"))){
+                                    if (!(player.getOpenInventory().getTitle().contains("附魔池"))) {
                                         cancel();
                                         return;
                                     }
@@ -632,7 +620,7 @@ public class EnchantMenuEvents implements Listener {
                                     PWEnchant enchant = getRandomEnchant(tier1, tier2, tier3, tier4, tier5, baglevel);
                                     int rank = enchant.getRank();
                                     int addChance = 0;
-                                    switch (rank){
+                                    switch (rank) {
                                         case 1:
                                             addChance = rank1Num;
                                             break;
@@ -651,24 +639,24 @@ public class EnchantMenuEvents implements Listener {
                                         default:
                                             break;
                                     }
-                                    List <String> buttonLore = new ArrayList<>();
+                                    List<String> buttonLore = new ArrayList<>();
                                     buttonLore.add(" ");
-                                    for (String s : enchant.getDescription()){
+                                    for (String s : enchant.getDescription()) {
                                         buttonLore.add(s);
                                     }
                                     buttonLore.add(" ");
-                                    if (addChance>0){
-                                        buttonLore.add(ChatColorCast.format("&b▪ &f成功率: &a&l" + enchantChanceMap.get(enchant) + "% &7(&e+"+addChance+"%&7)"));
-                                        buttonLore.add(ChatColorCast.format("&b▪ &f失败率: &c&l" + (100 - enchantChanceMap.get(enchant)) + "% &7(&e-"+addChance+"%&7)"));
-                                    }else{
+                                    if (addChance > 0) {
+                                        buttonLore.add(ChatColorCast.format("&b▪ &f成功率: &a&l" + enchantChanceMap.get(enchant) + "% &7(&e+" + addChance + "%&7)"));
+                                        buttonLore.add(ChatColorCast.format("&b▪ &f失败率: &c&l" + (100 - enchantChanceMap.get(enchant)) + "% &7(&e-" + addChance + "%&7)"));
+                                    } else {
                                         buttonLore.add(ChatColorCast.format("&b▪ &f成功率: &a&l" + enchantChanceMap.get(enchant) + "%"));
                                         buttonLore.add(ChatColorCast.format("&b▪ &f失败率: &c&l" + (100 - enchantChanceMap.get(enchant)) + "%"));
                                     }
                                     buttonLore.add(" ");
                                     buttonLore.add(ChatColorCast.format("&a&l点击&7选择该附魔"));
-                                    int totalChance = enchantChanceMap.get(enchant)+addChance;
-                                    if (totalChance>100){
-                                        totalChance=100;
+                                    int totalChance = enchantChanceMap.get(enchant) + addChance;
+                                    if (totalChance > 100) {
+                                        totalChance = 100;
                                     }
                                     ItemStack button = enchantMenu.getButton(
                                             enchant.getItem(),
@@ -692,7 +680,7 @@ public class EnchantMenuEvents implements Listener {
                         new BukkitRunnable() {
                             @Override
                             public void run() {
-                                if (IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)>0){
+                                if (IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL) > 0) {
                                     ItemStack roll_enchant = getButton(
                                             Material.TURTLE_EGG,
                                             ChatColorCast.format("&6&l开始抽取附魔"),
@@ -702,7 +690,7 @@ public class EnchantMenuEvents implements Listener {
                                                     ChatColorCast.format("&7相应附魔，你可以选取其中&b&l1个&7进行附魔"),
                                                     ChatColorCast.format("&7抽取完后若没有满意的附魔，你可以重新抽取"),
                                                     ChatColorCast.format(" "),
-                                                    ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l"+IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)),
+                                                    ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l" + IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL)),
                                                     ChatColorCast.format(" "),
                                                     ChatColorCast.format("&6&l点击&7开始抽取附魔")
                                             ),
@@ -725,23 +713,22 @@ public class EnchantMenuEvents implements Listener {
                                             true
                                     );
                                     NBTItem nbtDust = new NBTItem(dust);
-                                    nbtDust.setInteger("rank1",0);
-                                    nbtDust.setInteger("rank2",0);
-                                    nbtDust.setInteger("rank3",0);
-                                    nbtDust.setInteger("rank4",0);
-                                    nbtDust.setInteger("rank5",0);
+                                    nbtDust.setInteger("rank1", 0);
+                                    nbtDust.setInteger("rank2", 0);
+                                    nbtDust.setInteger("rank3", 0);
+                                    nbtDust.setInteger("rank4", 0);
+                                    nbtDust.setInteger("rank5", 0);
                                     dust = nbtDust.getItem();
-                                    viewInventory.setItem(8,dust);
+                                    viewInventory.setItem(8, dust);
                                     viewInventory.setItem(48, roll_enchant);
                                 }
                             }
                         }.runTaskLaterAsynchronously(PWItemManager.getPlugin(), 60l);
                         return;
-                    }
-                    else {
+                    } else {
                         if (down.containsKey(player) && down.get(player)) {
                             NBTItem nbtItem2 = new NBTItem(click);
-                            if(nbtItem2.hasKey("enchant")) {
+                            if (nbtItem2.hasKey("enchant")) {
                                 PWEnchant enchant = PWEnchant.valueOf(nbtItem2.getString("enchant"));
                                 int level = nbtItem2.getInteger("level");
                                 int success = nbtItem2.getInteger("success");
@@ -754,25 +741,25 @@ public class EnchantMenuEvents implements Listener {
                         }
                     }
 
-                    }
                 }
-            if (event.getClickedInventory().equals(player.getInventory())){
+            }
+            if (event.getClickedInventory().equals(player.getInventory())) {
                 if (down.containsKey(player) &&
                         event.getCurrentItem().getType().equals(Material.SUGAR) &&
                         !down.get(player)
-                ){
+                ) {
                     player.sendMessage(ChatColorCast.format("&c▸ 请在抽取附魔前选择附魔粉!"));
-                    player.playSound(player.getEyeLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f,0.1f);
+                    player.playSound(player.getEyeLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 0.1f);
                     return;
                 }
-                if (!(event.getCurrentItem().getType().equals(Material.SUGAR))){
+                if (!(event.getCurrentItem().getType().equals(Material.SUGAR))) {
                     return;
                 }
-                if (event.getCurrentItem().getAmount()!=1){
+                if (event.getCurrentItem().getAmount() != 1) {
                     return;
                 }
                 NBTItem nbtItem = new NBTItem(event.getCurrentItem());
-                if (!(nbtItem.hasKey("rank"))){
+                if (!(nbtItem.hasKey("rank"))) {
                     return;
                 }
                 int rank = nbtItem.getInteger("rank");
@@ -784,7 +771,7 @@ public class EnchantMenuEvents implements Listener {
                 int rank3Num = nbtDust.getInteger("rank3");
                 int rank4Num = nbtDust.getInteger("rank4");
                 int rank5Num = nbtDust.getInteger("rank5");
-                switch (rank){
+                switch (rank) {
                     case 1:
                         rank1Num = rank1Num + num;
                         break;
@@ -818,42 +805,42 @@ public class EnchantMenuEvents implements Listener {
                                 ChatColorCast.format("&7你可以点击你背包中的附魔之尘"),
                                 ChatColorCast.format("&7增加相应等级附魔的成功几率."),
                                 ChatColorCast.format(" "),
-                                ChatColorCast.format("&b▪ &f普通: &b&l+"+rank1Num+"%"),
-                                ChatColorCast.format("&b▪ &a优秀: &b&l+"+rank2Num+"%"),
-                                ChatColorCast.format("&b▪ &9稀有: &b&l+"+rank3Num+"%"),
-                                ChatColorCast.format("&b▪ &e史诗: &b&l+"+rank4Num+"%"),
-                                ChatColorCast.format("&b▪ &6传说: &b&l+"+rank5Num+"%")
+                                ChatColorCast.format("&b▪ &f普通: &b&l+" + rank1Num + "%"),
+                                ChatColorCast.format("&b▪ &a优秀: &b&l+" + rank2Num + "%"),
+                                ChatColorCast.format("&b▪ &9稀有: &b&l+" + rank3Num + "%"),
+                                ChatColorCast.format("&b▪ &e史诗: &b&l+" + rank4Num + "%"),
+                                ChatColorCast.format("&b▪ &6传说: &b&l+" + rank5Num + "%")
                         ),
                         true
                 );
                 NBTItem nbtDust2 = new NBTItem(dustDone);
-                nbtDust2.setInteger("rank1",rank1Num);
-                nbtDust2.setInteger("rank2",rank2Num);
-                nbtDust2.setInteger("rank3",rank3Num);
-                nbtDust2.setInteger("rank4",rank4Num);
-                nbtDust2.setInteger("rank5",rank5Num);
+                nbtDust2.setInteger("rank1", rank1Num);
+                nbtDust2.setInteger("rank2", rank2Num);
+                nbtDust2.setInteger("rank3", rank3Num);
+                nbtDust2.setInteger("rank4", rank4Num);
+                nbtDust2.setInteger("rank5", rank5Num);
                 dustDone = nbtDust2.getItem();
-                viewInventory.setItem(8,dustDone);
-                player.playSound(player.getEyeLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f,2f);
-                player.getInventory().setItem(event.getSlot(),new ItemStack(Material.AIR));
+                viewInventory.setItem(8, dustDone);
+                player.playSound(player.getEyeLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 2f);
+                player.getInventory().setItem(event.getSlot(), new ItemStack(Material.AIR));
                 player.updateInventory();
             }
-            }
-
+        }
 
 
     }
+
     @EventHandler
-    public void onCloseEnchantMenu(InventoryCloseEvent event){
+    public void onCloseEnchantMenu(InventoryCloseEvent event) {
 
 
         if (event.getView().getTitle().contains("附魔池")) {
             Inventory viewInventory = event.getView().getTopInventory();
             Player player = (Player) event.getPlayer();
-            if (!(down.containsKey(player))){
+            if (!(down.containsKey(player))) {
                 return;
             }
-            if (down.get(player)==true){
+            if (down.get(player) == true) {
                 ItemStack item = viewInventory.getItem(22);
                 ItemStack chose = viewInventory.getItem(3);
                 NBTItem nbtItem2 = new NBTItem(chose);
@@ -871,7 +858,7 @@ public class EnchantMenuEvents implements Listener {
                                 item.getType().equals(Material.GOLD_INGOT) || item.getType().equals(Material.GOLD_ORE) ||
                                 item.getType().equals(Material.DIAMOND) || item.getType().equals(Material.DIAMOND_ORE) ||
                                 item.getType().equals(Material.EMERALD) || item.getType().equals(Material.EMERALD_ORE)
-                ){
+                ) {
                     applyEnchantToBag.applyHandItemEnchantToBag(player, enchant.toString(), level, success, true);
                 }
                 down.remove(player);
@@ -879,20 +866,21 @@ public class EnchantMenuEvents implements Listener {
             }
         }
     }
+
     @EventHandler
-    public void onQuit(PlayerQuitEvent event){
+    public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         InventoryView inventoryView = player.getOpenInventory();
-        if (inventoryView==null){
+        if (inventoryView == null) {
             return;
         }
         String title = inventoryView.getTitle();
         Inventory viewInventory = inventoryView.getTopInventory();
         if (title.contains("附魔池")) {
-            if (!(down.containsKey(player))){
+            if (!(down.containsKey(player))) {
                 return;
             }
-            if (down.get(player)==true){
+            if (down.get(player) == true) {
                 ItemStack item = viewInventory.getItem(22);
                 ItemStack chose = viewInventory.getItem(3);
                 NBTItem nbtItem2 = new NBTItem(chose);
@@ -910,7 +898,7 @@ public class EnchantMenuEvents implements Listener {
                                 item.getType().equals(Material.GOLD_INGOT) || item.getType().equals(Material.GOLD_ORE) ||
                                 item.getType().equals(Material.DIAMOND) || item.getType().equals(Material.DIAMOND_ORE) ||
                                 item.getType().equals(Material.EMERALD) || item.getType().equals(Material.EMERALD_ORE)
-                ){
+                ) {
                     applyEnchantToBag.applyHandItemEnchantToBag(player, enchant.toString(), level, success, true);
                 }
                 down.remove(player);
@@ -918,8 +906,9 @@ public class EnchantMenuEvents implements Listener {
             }
         }
     }
-    public String getLevel(int level){
-        switch (level){
+
+    public String getLevel(int level) {
+        switch (level) {
             case 1:
                 return "I";
             case 2:
@@ -945,21 +934,21 @@ public class EnchantMenuEvents implements Listener {
         }
     }
 
-    public int getChance(int hadLevel,int hadLevelMax, int toolLevel){
-        double l1 = (double)hadLevel/(toolLevel);
-        if (hadLevel==1){
-            return getRandomInt(75,90);
+    public int getChance(int hadLevel, int hadLevelMax, int toolLevel) {
+        double l1 = (double) hadLevel / (toolLevel);
+        if (hadLevel == 1) {
+            return getRandomInt(75, 90);
         }
-        if (1-l1==0){
-            return getRandomInt(15,30);
+        if (1 - l1 == 0) {
+            return getRandomInt(15, 30);
         }
-        double l3 = (double)hadLevel/(hadLevelMax*2);
-        int chance = (int)Math.round(100*(1-l1)*(1-l3));
+        double l3 = (double) hadLevel / (hadLevelMax * 2);
+        int chance = (int) Math.round(100 * (1 - l1) * (1 - l3));
         return chance;
     }
 
-    public int getRandomInt(int min, int max){
-        return random.nextInt(max-min+1)+min;
+    public int getRandomInt(int min, int max) {
+        return random.nextInt(max - min + 1) + min;
     }
 
     public PWEnchant getRandomEnchant(List<PWEnchant> tier1,
@@ -968,9 +957,9 @@ public class EnchantMenuEvents implements Listener {
                                       List<PWEnchant> tier4,
                                       List<PWEnchant> tier5,
                                       int toolLevel
-                                           ){
-        List <PWEnchant> list = new ArrayList<>();
-        if (toolLevel<=5){
+    ) {
+        List<PWEnchant> list = new ArrayList<>();
+        if (toolLevel <= 5) {
             list.addAll(tier1);
             list.addAll(tier1);
             list.addAll(tier1);
@@ -978,7 +967,7 @@ public class EnchantMenuEvents implements Listener {
             list.addAll(tier2);
             list.addAll(tier3);
         }
-        if (toolLevel>5 && toolLevel<=12){
+        if (toolLevel > 5 && toolLevel <= 12) {
             list.addAll(tier1);
             list.addAll(tier1);
             list.addAll(tier1);
@@ -989,7 +978,7 @@ public class EnchantMenuEvents implements Listener {
             list.addAll(tier3);
             list.addAll(tier4);
         }
-        if (toolLevel>12 && toolLevel<=20){
+        if (toolLevel > 12 && toolLevel <= 20) {
             list.addAll(tier1);
             list.addAll(tier1);
             list.addAll(tier1);
@@ -1005,7 +994,7 @@ public class EnchantMenuEvents implements Listener {
             list.addAll(tier4);
             list.addAll(tier5);
         }
-        if (toolLevel>20){
+        if (toolLevel > 20) {
             list.addAll(tier1);
             list.addAll(tier1);
             list.addAll(tier1);
@@ -1027,7 +1016,8 @@ public class EnchantMenuEvents implements Listener {
         }
         return list.get(random.nextInt(list.size()));
     }
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow){
+
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);
@@ -1045,7 +1035,8 @@ public class EnchantMenuEvents implements Listener {
         item.setItemMeta(itemMeta);
         return item;
     }
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, PWEnchant enchant, int level, int success){
+
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, PWEnchant enchant, int level, int success) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);

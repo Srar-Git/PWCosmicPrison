@@ -26,6 +26,7 @@ public class ValueBreakSpeedOfPlayer extends SimpleExpression<Double> {
 
     private Expression<Player> playerin;
     private Expression<Block> blockin;
+
     @Override
     public Class<? extends Double> getReturnType() {
         return Double.class;

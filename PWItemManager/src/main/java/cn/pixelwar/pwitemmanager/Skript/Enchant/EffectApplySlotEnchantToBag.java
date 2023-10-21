@@ -12,7 +12,7 @@ import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
 
-public class EffectApplySlotEnchantToBag  extends Effect {
+public class EffectApplySlotEnchantToBag extends Effect {
     private Expression<Player> playerin;
     private Expression<Number> slotin;
     private Expression<String> enchantEnglishNamein;
@@ -50,7 +50,7 @@ public class EffectApplySlotEnchantToBag  extends Effect {
         int level = levelin.getSingle(e).intValue();
         int success = successin.getSingle(e).intValue();
         int slot = slotin.getSingle(e).intValue();
-        applyEnchant.applySlotItemEnchantToBag(player,slot, enchantEnglishName, level,success, false);
+        applyEnchant.applySlotItemEnchantToBag(player, slot, enchantEnglishName, level, success, false);
     }
 
 

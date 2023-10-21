@@ -919,7 +919,7 @@ public enum PWItem {
                     ItemFlag.HIDE_ATTRIBUTES,
                     ItemFlag.HIDE_ENCHANTS,
                     ItemFlag.HIDE_UNBREAKABLE
-                    )
+            )
     ),
     stone_pickaxe(
             Material.STONE_PICKAXE,

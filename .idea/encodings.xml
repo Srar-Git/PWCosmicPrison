@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/PWBlockManager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PWBlockManager/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PWItemManager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PWItemManager/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PWLevel/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PWLevel/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PWPacketStuff/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PWPacketStuff/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PWPlayer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PWPlayer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

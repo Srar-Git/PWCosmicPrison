@@ -19,7 +19,8 @@ public class YamlStorage {
     private final FileConfiguration config = new YamlConfiguration();
     PlayerExpDataManager playerExpDataManager = new PlayerExpDataManager();
     PlayerBoosterDataManager playerBoosterDataManager = new PlayerBoosterDataManager();
-//    PlayerOreExpDataManager playerOreExpDataManager = new PlayerOreExpDataManager();
+
+    //    PlayerOreExpDataManager playerOreExpDataManager = new PlayerOreExpDataManager();
     public void CheckYamlFile(Player player) {
 
         String playerName = player.getName();
@@ -35,7 +36,8 @@ public class YamlStorage {
             try {
                 dataFile.createNewFile();
                 isExist = false;
-            } catch (IOException ex) {}
+            } catch (IOException ex) {
+            }
         }
         try (InputStreamReader Config = new InputStreamReader(new FileInputStream(dataFile), "UTF-8")) {
             config.load(Config);
@@ -43,7 +45,7 @@ public class YamlStorage {
 
         }
         config.set("Name", player.getName());
-        if (!(isExist)){
+        if (!(isExist)) {
             config.set("totalExp", 0);
             config.set("level", 0);
             config.set("prestige", 0);
@@ -61,11 +63,13 @@ public class YamlStorage {
 //            config.set("DiamondExp", 0);
 //            config.set("EmeraldExp", 0);
         }
-        try{
-        config.save(dataFile);}catch (IOException ex){}
+        try {
+            config.save(dataFile);
+        } catch (IOException ex) {
+        }
     }
 
-    public void CreatePlayerDataMap(Player player){
+    public void CreatePlayerDataMap(Player player) {
 
 
         File dataFolder = new File("plugins/PWLevel/Players");
@@ -73,7 +77,8 @@ public class YamlStorage {
 
         try (InputStreamReader Config = new InputStreamReader(new FileInputStream(dataFile), "UTF-8")) {
             config.load(Config);
-        } catch (IOException | InvalidConfigurationException ex) {}
+        } catch (IOException | InvalidConfigurationException ex) {
+        }
 
         long totalExp = config.getLong("totalExp");
         int level = config.getInt("level");
@@ -88,24 +93,24 @@ public class YamlStorage {
         playerExpDataManager.createPlayerExpData(player, totalExp, prestige, level);
 
 
-
-        if (ExpBoosterTime>0) {
+        if (ExpBoosterTime > 0) {
             playerBoosterDataManager.createExpBoosterData(player, ExpBoosterTime, ExpMultiple);
         }
-        if (EnergyBoosterTime>0) {
+        if (EnergyBoosterTime > 0) {
             playerBoosterDataManager.createEnergyBoosterData(player, EnergyBoosterTime, EnergyMultiple);
         }
-        if (ShardBoosterTime>0) {
+        if (ShardBoosterTime > 0) {
             playerBoosterDataManager.createShardBoosterData(player, ShardBoosterTime, ShardMultiple);
         }
     }
 
-    public void savePlayerData(Player player){
+    public void savePlayerData(Player player) {
         File dataFolder = new File("plugins/PWLevel/Players");
         File dataFile = new File("plugins/PWLevel/Players/" + player.getName() + ".yml");
         try (InputStreamReader Config = new InputStreamReader(new FileInputStream(dataFile), "UTF-8")) {
             config.load(Config);
-        } catch (IOException | InvalidConfigurationException ex) {}
+        } catch (IOException | InvalidConfigurationException ex) {
+        }
 
         config.set("totalExp", playerExpDataManager.getTotalExp(player));
         config.set("level", playerExpDataManager.getLevel(player));
@@ -114,27 +119,28 @@ public class YamlStorage {
         if (getPlayerExpBoosterDataMap().containsKey(player.getName())) {
             config.set("ExpBoosterTime", playerBoosterDataManager.getExpBoosterTime(player));
             config.set("ExpMultiple", playerBoosterDataManager.getExpMultiple(player));
-        }else{
+        } else {
             config.set("ExpBoosterTime", 0);
             config.set("ExpMultiple", 1.0);
         }
         if (getPlayerEnergyBoosterDataMap().containsKey(player.getName())) {
             config.set("EnergyBoosterTime", playerBoosterDataManager.getEnergyBoosterTime(player));
             config.set("EnergyMultiple", playerBoosterDataManager.getEnergyMultiple(player));
-        }else{
+        } else {
             config.set("EnergyBoosterTime", 0);
             config.set("EnergyMultiple", 1.0);
         }
         if (getPlayerShardBoosterDataMap().containsKey(player.getName())) {
             config.set("ShardBoosterTime", playerBoosterDataManager.getShardBoosterTime(player));
             config.set("ShardMultiple", playerBoosterDataManager.getShardMultiple(player));
-        }else{
+        } else {
             config.set("ShardBoosterTime", 0);
             config.set("ShardMultiple", 1.0);
         }
-        try{
-            config.save(dataFile);}catch (IOException ex){
-            System.out.println("玩家"+player.getName()+"的等级信息保存出错");
+        try {
+            config.save(dataFile);
+        } catch (IOException ex) {
+            System.out.println("玩家" + player.getName() + "的等级信息保存出错");
         }
     }
 }

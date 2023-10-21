@@ -16,7 +16,6 @@ public class BoosterDoneEvent extends Event {
     }
 
 
-
     public static HandlerList getHandlerList() {
         return HANDLERS;
     }

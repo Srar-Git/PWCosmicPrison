@@ -20,6 +20,7 @@ public class ValuePlayerTotalExp extends SimpleExpression<Long> {
 
     private Expression<Player> player;
     private PlayerExpDataManager playerExpDataManager = new PlayerExpDataManager();
+
     @Override
     public Class<? extends Long> getReturnType() {
         return Long.class;
@@ -47,7 +48,7 @@ public class ValuePlayerTotalExp extends SimpleExpression<Long> {
     protected Long[] get(Event event) {
         Player p = player.getSingle(event);
         if (p != null) {
-            return new Long[] {
+            return new Long[]{
                     playerExpDataManager.getTotalExp(p)
             };
         }

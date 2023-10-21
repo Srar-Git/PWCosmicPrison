@@ -1,0 +1,6 @@
+name: PWBlockManager
+version: '${project.version}'
+main: cn.pixelwar.pwblockmanager.PWBlockManager
+api-version: 1.18
+authors: [ An_Lan ]
+depend: [ Skript, PWPacketStuff ]

@@ -2,8 +2,8 @@ name: PWLevel
 version: ${project.version}
 main: cn.pixelwar.pwlevel.PWLevel
 api-version: 1.18
-authors: [An_Lan]
-depend: [Skript]
+authors: [ An_Lan ]
+depend: [ Skript ]
 commands:
   pwlevel:
     description: PixelWar Level system.

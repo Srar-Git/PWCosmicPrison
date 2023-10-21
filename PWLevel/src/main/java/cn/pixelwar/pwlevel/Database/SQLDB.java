@@ -22,7 +22,8 @@ public class SQLDB {
         if (!databaseName.exists()) {
             try {
                 databaseName.createNewFile();
-            } catch (IOException ex) {}
+            } catch (IOException ex) {
+            }
         }
         if (connection == null) {
             connectToDatabase();
@@ -36,7 +37,8 @@ public class SQLDB {
                     if (!connection.isClosed()) {
                         connection.close();
                     }
-                } catch (SQLException ex) {}
+                } catch (SQLException ex) {
+                }
             });
             closing.start();
             long time = System.currentTimeMillis();
@@ -49,7 +51,8 @@ public class SQLDB {
             }
             SQLReloading = false;
             connectToDatabase();
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+        }
     }
 
     public static void connectToDatabase() {
@@ -67,12 +70,12 @@ public class SQLDB {
         } catch (ClassNotFoundException ex) {
 //            Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
 //            placeholders.put("{database}", "SQLite");
-            System.out.println("[PixelWarLevel]未找到class: "+ex.getLocalizedMessage());
+            System.out.println("[PixelWarLevel]未找到class: " + ex.getLocalizedMessage());
         } catch (SQLException ex) {
 //            Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
 //            placeholders.put("{database}", "SQLite");
 //            placeholders.put("{error}", ex.getLocalizedMessage());
-            System.out.println("[PixelWarLevel]创建SQLite失败: "+ex.getLocalizedMessage());
+            System.out.println("[PixelWarLevel]创建SQLite失败: " + ex.getLocalizedMessage());
         }
     }
 
@@ -111,10 +114,11 @@ public class SQLDB {
     }
 
     public static void executeUpdate(PreparedStatement statement) {
-        while (SQLReloading) {}
+        while (SQLReloading) {
+        }
         try {
             statement.executeUpdate();
-        }  catch (SQLException ex) {
+        } catch (SQLException ex) {
 //            Map<String, String> placeholders = MessageUtil.getDefaultPlaceholders();
 //            placeholders.put("{database}", "SQLite");
 //            placeholders.put("{error}", ex.getLocalizedMessage() != null ? ex.getLocalizedMessage() : "null");
@@ -122,12 +126,14 @@ public class SQLDB {
             System.out.println("[PixelWarLevel]数据保存错误");
             try {
                 if (getConnection().isClosed()) repairConnection();
-            } catch (SQLException ex1) {}
+            } catch (SQLException ex1) {
+            }
         }
     }
 
     public static ResultSet executeQuery(PreparedStatement statement) {
-        while (SQLReloading) {}
+        while (SQLReloading) {
+        }
         try {
             return statement.executeQuery();
         } catch (SQLException ex) {
@@ -138,14 +144,16 @@ public class SQLDB {
             System.out.println("[PixelWarLevel]数据读取错误");
             try {
                 if (getConnection().isClosed()) repairConnection();
-            } catch (SQLException ex1) {}
+            } catch (SQLException ex1) {
+            }
         }
         return null;
     }
 
     @Deprecated
     public static void executeUpdate(String sql) {
-        while (SQLReloading) {}
+        while (SQLReloading) {
+        }
         try {
             connection.createStatement().executeUpdate(sql);
         } catch (SQLException ex) {
@@ -156,13 +164,15 @@ public class SQLDB {
             System.out.println("[PixelWarLevel]数据保存错误");
             try {
                 if (getConnection().isClosed()) repairConnection();
-            } catch (SQLException ex1) {}
+            } catch (SQLException ex1) {
+            }
         }
     }
 
     @Deprecated
     public static ResultSet executeQuery(String sql) {
-        while (SQLReloading) {}
+        while (SQLReloading) {
+        }
         try {
             return connection.createStatement().executeQuery(sql);
         } catch (SQLException ex) {
@@ -173,7 +183,8 @@ public class SQLDB {
             System.out.println("[PixelWarLevel]数据读取错误");
             try {
                 if (getConnection().isClosed()) repairConnection();
-            } catch (SQLException ex1) {}
+            } catch (SQLException ex1) {
+            }
         }
         return null;
     }
@@ -188,6 +199,7 @@ public class SQLDB {
 
     /**
      * Back up all player data.
+     *
      * @param filePath Backup file path.
      * @throws SQLException
      */

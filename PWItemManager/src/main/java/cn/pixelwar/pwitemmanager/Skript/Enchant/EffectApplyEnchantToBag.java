@@ -47,7 +47,7 @@ public class EffectApplyEnchantToBag extends Effect {
         String enchantEnglishName = enchantEnglishNamein.getSingle(e);
         int level = levelin.getSingle(e).intValue();
         int success = successin.getSingle(e).intValue();
-        applyEnchant.applyHandItemEnchantToBag(player, enchantEnglishName, level,success, false);
+        applyEnchant.applyHandItemEnchantToBag(player, enchantEnglishName, level, success, false);
     }
 
 

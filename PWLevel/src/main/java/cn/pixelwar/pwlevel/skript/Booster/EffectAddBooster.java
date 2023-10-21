@@ -21,11 +21,13 @@ public class EffectAddBooster extends Effect {
     private Expression<String> typein;
     private Expression<Number> timein;
     private Expression<Number> multiplein;
+
     static {
-        Skript.registerEffect(EffectAddBooster.class, new String[] {
+        Skript.registerEffect(EffectAddBooster.class, new String[]{
                 "addbooster %player% %string% %number% %number%",
         });
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
@@ -53,21 +55,21 @@ public class EffectAddBooster extends Effect {
             @Override
             public void run() {
 
-                switch (type){
+                switch (type) {
                     case "exp":
-                        if(getPlayerExpBoosterDataMap().containsKey(player.getName())){
+                        if (getPlayerExpBoosterDataMap().containsKey(player.getName())) {
                             return;
                         }
                         playerBoosterDataManager.createExpBoosterData(player, time, multiple);
                         break;
                     case "energy":
-                        if(getPlayerEnergyBoosterDataMap().containsKey(player.getName())){
+                        if (getPlayerEnergyBoosterDataMap().containsKey(player.getName())) {
                             return;
                         }
                         playerBoosterDataManager.createEnergyBoosterData(player, time, multiple);
                         break;
                     case "shard":
-                        if(getPlayerShardBoosterDataMap().containsKey(player.getName())){
+                        if (getPlayerShardBoosterDataMap().containsKey(player.getName())) {
                             return;
                         }
                         playerBoosterDataManager.createShardBoosterData(player, time, multiple);

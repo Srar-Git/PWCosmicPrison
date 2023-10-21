@@ -11,19 +11,19 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class SaveData {
 
-    public void saveData(Player player){
+    public void saveData(Player player) {
         PlayerBoosterDataManager playerBoosterDataManager = new PlayerBoosterDataManager();
-                YamlStorage yamlStorage = new YamlStorage();
-                yamlStorage.savePlayerData(player);
-                playerBoosterDataManager.removePlayerFromMap(player);
+        YamlStorage yamlStorage = new YamlStorage();
+        yamlStorage.savePlayerData(player);
+        playerBoosterDataManager.removePlayerFromMap(player);
     }
 
-    public void savingTimer(){
+    public void savingTimer() {
         PlayerBoosterDataManager playerBoosterDataManager = new PlayerBoosterDataManager();
         new BukkitRunnable() {
             @Override
             public void run() {
-                for(Player player : Bukkit.getServer().getOnlinePlayers()) {
+                for (Player player : Bukkit.getServer().getOnlinePlayers()) {
                     saveData(player);
                 }
 //                System.out.println("[PWLevel] 成功保存玩家数据");

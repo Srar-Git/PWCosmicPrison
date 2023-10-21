@@ -42,8 +42,8 @@ public class EffectUpdateHandNBTString extends Effect {
         SetItemNBT setItemNBT = new SetItemNBT();
         Player player = playerin.getSingle(e);
         String path = pathin.getSingle(e);
-            String nbtString = nbtStringin.getSingle(e);
-            setItemNBT.updateHandNBT(player, path, nbtString);
+        String nbtString = nbtStringin.getSingle(e);
+        setItemNBT.updateHandNBT(player, path, nbtString);
 
     }
 

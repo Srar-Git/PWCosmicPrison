@@ -1,0 +1,7 @@
+name: PWPacketStuff
+version: '${project.version}'
+main: cn.pixelwar.pwpacketstuff.PWPacketStuff
+api-version: 1.18
+authors: [ anlan ]
+description: PWPacketStuff
+depend: [ Skript ]

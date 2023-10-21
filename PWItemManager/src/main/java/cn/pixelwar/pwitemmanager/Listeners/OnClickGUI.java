@@ -40,7 +40,7 @@ public class OnClickGUI implements Listener {
             if (event.getClickedInventory().equals(player.getInventory())) {
                 event.setCancelled(true);
                 ItemStack itemStack = event.getCurrentItem();
-                if (itemStack.getType().toString().contains("PICKAXE")){
+                if (itemStack.getType().toString().contains("PICKAXE")) {
 
                     ItemStack back = getButton(
                             Material.BLACK_STAINED_GLASS_PANE,
@@ -49,8 +49,8 @@ public class OnClickGUI implements Listener {
                             ),
                             false
                     );
-                    for (int i = 0; i<54;i++){
-                        if (i==4){
+                    for (int i = 0; i < 54; i++) {
+                        if (i == 4) {
                             continue;
                         }
                         viewInventory.setItem(i, back);
@@ -58,11 +58,11 @@ public class OnClickGUI implements Listener {
                     Requirement req = getRequirement(itemStack, event.getSlot());
                     ItemStack reqItem = req.getRequireItem();
                     NBTItem nbtItem = new NBTItem(reqItem);
-                    if (req.isReachRequirement()){
-                        int[] engineSlots = {29,30,31,32,33,38,39,40,41,42};
-                        int i =0;
-                        for (Engine engine : Engine.values()){
-                            if (nbtItem.hasKey("engine"+engine.toString())){
+                    if (req.isReachRequirement()) {
+                        int[] engineSlots = {29, 30, 31, 32, 33, 38, 39, 40, 41, 42};
+                        int i = 0;
+                        for (Engine engine : Engine.values()) {
+                            if (nbtItem.hasKey("engine" + engine.toString())) {
                                 ItemStack engineButton = getButton(
                                         Material.BARRIER,
                                         ChatColorCast.format(engine.getName()),
@@ -75,7 +75,7 @@ public class OnClickGUI implements Listener {
                                         false
                                 );
                                 viewInventory.setItem(engineSlots[i], engineButton);
-                            }else{
+                            } else {
                                 ItemStack engineButton = getButton(
                                         Material.STRUCTURE_VOID,
                                         ChatColorCast.format(engine.getName()),
@@ -96,7 +96,7 @@ public class OnClickGUI implements Listener {
                                         engine.toString(),
                                         "slot",
                                         event.getSlot()
-                                        );
+                                );
                                 viewInventory.setItem(engineSlots[i], engineButton);
                             }
 
@@ -112,27 +112,27 @@ public class OnClickGUI implements Listener {
             if (event.getClickedInventory().equals(viewInventory)) {
                 event.setCancelled(true);
                 ItemStack click = event.getCurrentItem();
-                if (click.getType().equals(Material.STRUCTURE_VOID)){
+                if (click.getType().equals(Material.STRUCTURE_VOID)) {
                     NBTItem nbtItem = new NBTItem(click);
                     int slot = nbtItem.getInteger("slot");
                     String engineType = nbtItem.getString("engineType");
                     ItemStack pickaxe = player.getInventory().getItem(slot);
                     NBTItem nbtItem1 = new NBTItem(pickaxe);
-                    if (engineType.equals("CUBE")){
-                        if (nbtItem1.getInteger("toolprestige")!=9){
-                            player.playSound(player.getEyeLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f,0.1f);
+                    if (engineType.equals("CUBE")) {
+                        if (nbtItem1.getInteger("toolprestige") != 9) {
+                            player.playSound(player.getEyeLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 0.1f);
                             player.sendMessage(ChatColorCast.format("&c▸ 你的镐需要达到荣誉等级&d&l<&b&lIX&d&l>&c才能选择此引擎!"));
                             return;
                         }
                     }
                     LevelUp levelUp = new LevelUp();
-                    if (nbtItem1.hasKey("nuclearfreeprestige")){
+                    if (nbtItem1.hasKey("nuclearfreeprestige")) {
                         player.getInventory().setItem(slot, levelUp.getLeveledItemWithoutClear(pickaxe, Engine.valueOf(engineType)));
                         UpdateSlotLore updateSlotLore = new UpdateSlotLore();
                         updateSlotLore.removeSlotPickaxeGem(player, "gemprestige1", slot);
-                    }else {
+                    } else {
                         player.getInventory().setItem(slot, levelUp.getLeveledItem(pickaxe, Engine.valueOf(engineType)));
-                        if (nbtItem1.hasKey("freeprestige")){
+                        if (nbtItem1.hasKey("freeprestige")) {
                             UpdateSlotLore updateSlotLore = new UpdateSlotLore();
                             updateSlotLore.removeSlotPickaxeGem(player, "gemprestige0", slot);
                         }
@@ -149,10 +149,9 @@ public class OnClickGUI implements Listener {
         }
     }
 
-    public Requirement getRequirement(ItemStack input, int slot){
+    public Requirement getRequirement(ItemStack input, int slot) {
         NumberFormat numberFormat = new NumberFormat();
         NBTItem nbtItem = new NBTItem(input);
-
 
 
         int prestige = nbtItem.getInteger("toolprestige");
@@ -162,8 +161,8 @@ public class OnClickGUI implements Listener {
         input = nbtItem.getItem();
         int requireDig = 9999999;
         int requireLevel = 99999;
-        if (input.getType().equals(Material.WOODEN_PICKAXE)){
-            switch (prestige){
+        if (input.getType().equals(Material.WOODEN_PICKAXE)) {
+            switch (prestige) {
                 case 0:
                     requireDig = 20000;
                     requireLevel = 20;
@@ -208,8 +207,8 @@ public class OnClickGUI implements Listener {
                     break;
             }
         }
-        if (input.getType().equals(Material.STONE_PICKAXE)){
-            switch (prestige){
+        if (input.getType().equals(Material.STONE_PICKAXE)) {
+            switch (prestige) {
                 case 0:
                     requireDig = 31000;
                     requireLevel = 25;
@@ -254,8 +253,8 @@ public class OnClickGUI implements Listener {
                     break;
             }
         }
-        if (input.getType().equals(Material.GOLDEN_PICKAXE)){
-            switch (prestige){
+        if (input.getType().equals(Material.GOLDEN_PICKAXE)) {
+            switch (prestige) {
                 case 0:
                     requireDig = 45500;
                     requireLevel = 30;
@@ -300,8 +299,8 @@ public class OnClickGUI implements Listener {
                     break;
             }
         }
-        if (input.getType().equals(Material.IRON_PICKAXE)){
-            switch (prestige){
+        if (input.getType().equals(Material.IRON_PICKAXE)) {
+            switch (prestige) {
                 case 0:
                     requireDig = 65500;
                     requireLevel = 35;
@@ -346,8 +345,8 @@ public class OnClickGUI implements Listener {
                     break;
             }
         }
-        if (input.getType().equals(Material.DIAMOND_PICKAXE)){
-            switch (prestige){
+        if (input.getType().equals(Material.DIAMOND_PICKAXE)) {
+            switch (prestige) {
                 case 0:
                     requireDig = 92500;
                     requireLevel = 40;
@@ -394,13 +393,13 @@ public class OnClickGUI implements Listener {
         }
 
         boolean reachRequirement = false;
-        if (dig>=requireDig && level>=requireLevel){
+        if (dig >= requireDig && level >= requireLevel) {
             reachRequirement = true;
         }
 
         ItemMeta itemMeta = input.getItemMeta();
         List<String> lore = itemMeta.getLore();
-        if (nbtItem.hasKey("freeprestige") || nbtItem.hasKey("nuclearfreeprestige")){
+        if (nbtItem.hasKey("freeprestige") || nbtItem.hasKey("nuclearfreeprestige")) {
             reachRequirement = true;
             lore.add(ChatColorCast.format("&a&l✔ &f你的工具已经满足需求!请点击"));
             lore.add(ChatColorCast.format("&f下方引擎来选择你的升级引擎!"));
@@ -411,10 +410,9 @@ public class OnClickGUI implements Listener {
             requirement.setReachRequirement(reachRequirement);
             return requirement;
         }
-        if (prestige>=10){
+        if (prestige >= 10) {
             lore.add(ChatColorCast.format("&c&l✖ &f你的工具已经达到最高荣誉等级&d&l<&b&lX&d&l>"));
-        }
-        else {
+        } else {
             lore.add(ChatColorCast.format("&d&l| 升级荣誉需求"));
             lore.add(ChatColorCast.format("&b▸ &f下一荣誉等级: " + "&d&l<&b&l" + getLevel(prestige + 1) + "&d&l>"));
             lore.add(ChatColorCast.format("&b▸ &f需求镐等级: &e&lLv." + requireLevel));
@@ -436,8 +434,8 @@ public class OnClickGUI implements Listener {
 
     }
 
-    public String getLevel(int level){
-        switch (level){
+    public String getLevel(int level) {
+        switch (level) {
             case 0:
                 return "";
             case 1:
@@ -464,7 +462,8 @@ public class OnClickGUI implements Listener {
                 return null;
         }
     }
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow){
+
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);
@@ -483,7 +482,7 @@ public class OnClickGUI implements Listener {
         return item;
     }
 
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, String nbtPath, String nbt, String nbtPath2, int nbtint){
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, String nbtPath, String nbt, String nbtPath2, int nbtint) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);

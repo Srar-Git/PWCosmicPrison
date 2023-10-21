@@ -22,6 +22,7 @@ public class ValueEnergyMulti extends SimpleExpression<Double> {
 
     private Expression<Player> player;
     private PlayerBoosterDataManager playerBoosterDataManager = new PlayerBoosterDataManager();
+
     @Override
     public Class<? extends Double> getReturnType() {
         return Double.class;
@@ -48,13 +49,13 @@ public class ValueEnergyMulti extends SimpleExpression<Double> {
     @Nullable
     protected Double[] get(Event event) {
         Player p = player.getSingle(event);
-        if (getPlayerEnergyBoosterDataMap().containsKey(p.getName())){
+        if (getPlayerEnergyBoosterDataMap().containsKey(p.getName())) {
             if (p != null) {
-                return new Double[] {
+                return new Double[]{
                         playerBoosterDataManager.getEnergyMultiple(p)
                 };
             }
         }
-        return new Double[] {1.0};
+        return new Double[]{1.0};
     }
 }

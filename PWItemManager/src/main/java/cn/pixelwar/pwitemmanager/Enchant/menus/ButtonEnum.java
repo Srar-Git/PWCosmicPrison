@@ -22,12 +22,12 @@ public enum ButtonEnum {
                     ChatColorCast.format("&7随机附魔，然后你可以选择其中&n一个&r!")
             ),
             false
-            ),
+    ),
     BACKGROUND(Material.BLACK_STAINED_GLASS_PANE,
             " ",
             asList(),
             false
-            ),
+    ),
     LOCKED_SLOT(Material.RED_STAINED_GLASS_PANE,
             ChatColorCast.format("&c✖ &f未解锁的附魔格"),
             asList(
@@ -48,13 +48,6 @@ public enum ButtonEnum {
             ),
             true
     ),
-
-
-
-
-
-
-
 
 
     ;

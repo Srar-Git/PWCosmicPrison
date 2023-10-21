@@ -14,17 +14,21 @@ import javax.annotation.Nullable;
 public class ExpDecimalNumber extends SimpleExpression<String> {
     private Expression<Number> decimalin;
     private Expression<Number> numberin;
+
     static {
         Skript.registerExpression(ExpDecimalNumber.class, String.class, ExpressionType.SIMPLE, new String[]{"decimalnumber %number% %number%"});
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
@@ -32,6 +36,7 @@ public class ExpDecimalNumber extends SimpleExpression<String> {
         this.numberin = (Expression<Number>) expressions[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event event, boolean debug) {
         return null;
@@ -44,7 +49,7 @@ public class ExpDecimalNumber extends SimpleExpression<String> {
         int decimal = decimalin.getSingle(event).intValue();
         double number = numberin.getSingle(event).doubleValue();
         String numberout = numberFormat.getDecimalFormat(decimal, number);
-        return new String[] {numberout};
+        return new String[]{numberout};
     }
 
 }

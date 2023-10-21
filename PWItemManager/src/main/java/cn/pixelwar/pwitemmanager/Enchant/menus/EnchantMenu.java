@@ -18,25 +18,26 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class EnchantMenu{
+public class EnchantMenu {
 
-    public void createGUI(Player player, ItemStack item){
+    public void createGUI(Player player, ItemStack item) {
         int enchantSlot = IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTSLOTS);
         int reroll = IntDataManager.IntDataMap.get(player.getName()).singleMap.get(IntDataType.ENCHANTREROLL);
-        if (player.hasPermission("enchantslot.1")){}
+        if (player.hasPermission("enchantslot.1")) {
+        }
 
 
         ItemMeta itemMeta = item.getItemMeta();
         String name = itemMeta.getDisplayName();
         List<String> lore = itemMeta.getLore();
-        Inventory gui = Bukkit.createInventory(player, 54, ChatColor.DARK_GRAY+"附魔池 "+name);
+        Inventory gui = Bukkit.createInventory(player, 54, ChatColor.DARK_GRAY + "附魔池 " + name);
 
         ItemStack back = getButton(
                 Material.BLACK_STAINED_GLASS_PANE,
                 " ",
                 asList(),
                 false
-                );
+        );
         ItemStack red = getButton(
                 Material.RED_STAINED_GLASS_PANE,
                 ChatColorCast.format("&c✖ &f未解锁的附魔格"),
@@ -46,7 +47,7 @@ public class EnchantMenu{
                         ChatColorCast.format("&7或者通过&d&l特殊物品&7来增加附魔格数量")
                 ),
                 false
-                );
+        );
         ItemStack green = getButton(
                 Material.LIME_STAINED_GLASS_PANE,
                 ChatColorCast.format("&a✔ &f已解锁的附魔格"),
@@ -89,31 +90,31 @@ public class EnchantMenu{
                 true
         );
         NBTItem nbtDust = new NBTItem(dust);
-        nbtDust.setInteger("rank1",0);
-        nbtDust.setInteger("rank2",0);
-        nbtDust.setInteger("rank3",0);
-        nbtDust.setInteger("rank4",0);
-        nbtDust.setInteger("rank5",0);
+        nbtDust.setInteger("rank1", 0);
+        nbtDust.setInteger("rank2", 0);
+        nbtDust.setInteger("rank3", 0);
+        nbtDust.setInteger("rank4", 0);
+        nbtDust.setInteger("rank5", 0);
         dust = nbtDust.getItem();
         player.playSound(player.getEyeLocation(), Sound.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-        int[] slots = {3,4,5,11,15,19,25,29,33,39,41,40};
+        int[] slots = {3, 4, 5, 11, 15, 19, 25, 29, 33, 39, 41, 40};
         List<Integer> redSlots = new ArrayList<>();
         List<Integer> greenSlots = new ArrayList<>();
-        for (int e : slots){
+        for (int e : slots) {
             redSlots.add(e);
         }
-        for (int i = 0; i < enchantSlot; i++){
+        for (int i = 0; i < enchantSlot; i++) {
             greenSlots.add(slots[i]);
         }
-        for (int i = 0; i < 54; i++){
+        for (int i = 0; i < 54; i++) {
             gui.setItem(i, back);
         }
 
         gui.setItem(22, item);
-        if (item.getType().equals(Material.ENCHANTED_BOOK)){
+        if (item.getType().equals(Material.ENCHANTED_BOOK)) {
             gui.setItem(49, roll_book);
         }
-        if (item.getType().toString().contains("PICKAXE")){
+        if (item.getType().toString().contains("PICKAXE")) {
             ItemStack roll_enchant = getButton(
                     Material.TURTLE_EGG,
                     ChatColorCast.format("&6&l开始抽取附魔"),
@@ -123,7 +124,7 @@ public class EnchantMenu{
                             ChatColorCast.format("&7相应附魔，你可以选取其中&b&l1个&7进行附魔"),
                             ChatColorCast.format("&7抽取完后若没有满意的附魔，你可以重新抽取"),
                             ChatColorCast.format(" "),
-                            ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l"+reroll),
+                            ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l" + reroll),
                             ChatColorCast.format(" "),
                             ChatColorCast.format("&6&l点击&7开始抽取附魔")
                     ),
@@ -131,7 +132,7 @@ public class EnchantMenu{
             );
             gui.setItem(49, roll_enchant);
             gui.setItem(8, dust);
-            for (int i = 0; i < 54; i++){
+            for (int i = 0; i < 54; i++) {
                 if (redSlots.contains(i))
                     gui.setItem(i, red);
                 if (greenSlots.contains(i))
@@ -146,7 +147,7 @@ public class EnchantMenu{
                         item.getType().equals(Material.GOLD_INGOT) || item.getType().equals(Material.GOLD_ORE) ||
                         item.getType().equals(Material.DIAMOND) || item.getType().equals(Material.DIAMOND_ORE) ||
                         item.getType().equals(Material.EMERALD) || item.getType().equals(Material.EMERALD_ORE)
-        ){
+        ) {
             ItemStack roll_enchant = getButton(
                     Material.TURTLE_EGG,
                     ChatColorCast.format("&6&l开始抽取附魔"),
@@ -156,7 +157,7 @@ public class EnchantMenu{
                             ChatColorCast.format("&7相应附魔，你可以选取其中&b&l1个&7进行附魔"),
                             ChatColorCast.format("&7抽取完后若没有满意的附魔，你可以重新抽取"),
                             ChatColorCast.format(" "),
-                            ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l"+reroll),
+                            ChatColorCast.format("&b▪ &f剩余重抽次数: &d&l" + reroll),
                             ChatColorCast.format(" "),
                             ChatColorCast.format("&c&l注意!&7选择附魔后将不能选择升级!"),
                             ChatColorCast.format(" "),
@@ -166,7 +167,7 @@ public class EnchantMenu{
             );
             gui.setItem(48, roll_enchant);
             gui.setItem(8, dust);
-            for (int i = 0; i < 54; i++){
+            for (int i = 0; i < 54; i++) {
                 if (redSlots.contains(i))
                     gui.setItem(i, red);
                 if (greenSlots.contains(i))
@@ -192,17 +193,13 @@ public class EnchantMenu{
             gui.setItem(50, upbag);
 
 
-
-
-
         }
-
 
 
         player.openInventory(gui);
     }
 
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow){
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);
@@ -220,7 +217,8 @@ public class EnchantMenu{
         item.setItemMeta(itemMeta);
         return item;
     }
-    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, PWEnchant enchant, int level, int success){
+
+    public ItemStack getButton(Material material, String name, List<String> lore, boolean glow, PWEnchant enchant, int level, int success) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setLore(lore);

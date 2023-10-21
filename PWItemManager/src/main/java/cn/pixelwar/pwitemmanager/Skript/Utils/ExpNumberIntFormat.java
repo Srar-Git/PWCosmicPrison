@@ -13,23 +13,28 @@ import javax.annotation.Nullable;
 
 public class ExpNumberIntFormat extends SimpleExpression<String> {
     private Expression<Number> numberin;
+
     static {
         Skript.registerExpression(ExpNumberIntFormat.class, String.class, ExpressionType.SIMPLE, new String[]{"intformat of %number%"});
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expressions, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
         this.numberin = (Expression<Number>) expressions[0];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event event, boolean debug) {
         return null;
@@ -42,7 +47,7 @@ public class ExpNumberIntFormat extends SimpleExpression<String> {
 //        long numberlong = (long) numberin.getSingle(event);
         int numberint = numberin.getSingle(event).intValue();
         String number = numberFormat.getIntFormat(numberint);
-        return new String[] {number};
+        return new String[]{number};
     }
 
 }

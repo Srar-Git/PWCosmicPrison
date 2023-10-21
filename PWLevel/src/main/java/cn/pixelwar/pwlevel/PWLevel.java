@@ -31,7 +31,8 @@ public final class PWLevel extends JavaPlugin {
     }
 
     public static Plugin getPlugin() {
-        return plugin;}
+        return plugin;
+    }
 
     @Override
     public void onEnable() {
@@ -58,26 +59,28 @@ public final class PWLevel extends JavaPlugin {
         SaveData saveData = new SaveData();
         saveData.savingTimer();
     }
+
     public SkriptAddon getAddonInstance() {
         return addon;
     }
+
     @Override
     public void onDisable() {
         SaveData saveData = new SaveData();
-        for(Player player : Bukkit.getServer().getOnlinePlayers()) {
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             saveData.saveData(player);
         }
     }
 
-    public void RegisterEvents(){
-        getServer().getPluginManager().registerEvents((Listener)new OnPlayerLevelUP(), (Plugin)this);
-        getServer().getPluginManager().registerEvents((Listener)new OnBlockBreak(), (Plugin)this);
-        getServer().getPluginManager().registerEvents((Listener)new OnEntityDeath(), (Plugin)this);
-        getServer().getPluginManager().registerEvents((Listener)new OnExpBottleDrop(), (Plugin)this);
-        getServer().getPluginManager().registerEvents((Listener)new OnFishEvent(), (Plugin)this);
-        getServer().getPluginManager().registerEvents((Listener)new OnFurnaceExp(), (Plugin)this);
-        getServer().getPluginManager().registerEvents((Listener)new OnPlayerExpChange(), (Plugin)this);
-        getServer().getPluginManager().registerEvents((Listener)new OnPlayerDeath(), (Plugin)this);
+    public void RegisterEvents() {
+        getServer().getPluginManager().registerEvents((Listener) new OnPlayerLevelUP(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new OnBlockBreak(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new OnEntityDeath(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new OnExpBottleDrop(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new OnFishEvent(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new OnFurnaceExp(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new OnPlayerExpChange(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new OnPlayerDeath(), (Plugin) this);
 //        getServer().getPluginManager().registerEvents((Listener)new OnAsyncPlayerJoin(), (Plugin)this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerQuit(), this);
@@ -85,7 +88,7 @@ public final class PWLevel extends JavaPlugin {
     }
 
 
-    private void setupConfig(){
+    private void setupConfig() {
         saveDefaultConfig();
         reloadConfig();
         config = getConfig();

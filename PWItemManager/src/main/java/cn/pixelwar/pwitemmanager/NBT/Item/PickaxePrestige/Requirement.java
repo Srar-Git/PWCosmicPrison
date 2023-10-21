@@ -8,7 +8,7 @@ public class Requirement {
     private ItemStack requireItem;
     private boolean reachRequirement;
 
-    public Requirement(){
+    public Requirement() {
 
     }
 

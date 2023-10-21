@@ -50,7 +50,7 @@ public class EffectApplySlotEnchantToWeapon extends Effect {
         int level = levelin.getSingle(e).intValue();
         int success = successin.getSingle(e).intValue();
         int slot = slotin.getSingle(e).intValue();
-        applyEnchant.applySlotItemEnchantToSwordAndAxe(player,slot, enchantEnglishName, level,success);
+        applyEnchant.applySlotItemEnchantToSwordAndAxe(player, slot, enchantEnglishName, level, success);
     }
 
 

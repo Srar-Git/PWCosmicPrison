@@ -1,0 +1,59 @@
+meteor:
+  total:
+    world: 1000
+    new: 40
+jinghua:
+  total:
+    coal: 1
+    iron: 2
+    lapis: 2
+    redstone: 3
+    gold: 3
+    diamond: 4
+    emerald: 4
+worlds:
+  #世界名字
+  world:
+    #每一个区域的x，z范围
+    coal:
+      minx: -1234
+      maxx: -1168
+      minz: -160
+      maxz: 0
+    iron:
+      minx: -1681
+      maxx: -928
+      minz: 40
+      maxz: 352
+    lapis:
+      minx: -987
+      maxx: -444
+      minz: -400
+      maxz: 450
+    redstone:
+      minx: -820
+      maxx: -196
+      minz: -400
+      maxz: 450
+    gold:
+      minx: -213
+      maxx: 270
+      minz: -400
+      maxz: 450
+    diamond:
+      minx: -200
+      maxx: 880
+      minz: -400
+      maxz: 450
+    emerald:
+      minx: 900
+      maxx: 1600
+      minz: -400
+      maxz: 450
+
+  new:
+    newcoal:
+      minx: -616
+      maxx: -523
+      minz: 610
+      maxz: 655

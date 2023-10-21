@@ -17,7 +17,7 @@ public class OnPlayerLevelUP implements Listener {
         bigSound(player);
     }
 
-    public void PlaySound(Player player, Sound sound, float volume, float pitch){
+    public void PlaySound(Player player, Sound sound, float volume, float pitch) {
         player.playSound(player.getEyeLocation(), sound, volume, pitch);
 //        MinecraftKey key = new MinecraftKey(sound);
 //        SoundEffect effect = new SoundEffect(key);
@@ -25,7 +25,7 @@ public class OnPlayerLevelUP implements Listener {
 //        ((CraftPlayer) player).getHandle().connection.send(soundpacket);
     }
 
-    public void bigSound(Player player){
+    public void bigSound(Player player) {
 
         PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.8f);
 
@@ -34,89 +34,60 @@ public class OnPlayerLevelUP implements Listener {
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.5f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 10L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 10L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 20L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 20L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 0.7f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 30L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 30L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.4f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 40L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 40L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.1f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 50L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 50L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.7f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 60L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 60L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.6f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 70L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 70L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.9f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 72L);
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 72L);
         new BukkitRunnable() {
             @Override
             public void run() {
                 PlaySound(player, Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 2.0f);
             }
-        }.runTaskLaterAsynchronously(PWLevel.getPlugin() , 85L);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }.runTaskLaterAsynchronously(PWLevel.getPlugin(), 85L);
 
 
     }
 
-    public void firework(Player player){
+    public void firework(Player player) {
 
 
     }

@@ -15,7 +15,6 @@ import org.bukkit.inventory.ItemStack;
 public class ShardMenuEvents implements Listener {
 
 
-
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
         if (event.getPlayer().getItemInHand().getType().equals(Material.AMETHYST_SHARD)) {
@@ -34,10 +33,10 @@ public class ShardMenuEvents implements Listener {
         InventoryView inventoryView = event.getView();
         String title = inventoryView.getTitle();
         Inventory viewInventory = event.getView().getTopInventory();
-        if (event.getClickedInventory() == null){
+        if (event.getClickedInventory() == null) {
             return;
         }
-        if(title.contains("矿物碎片")){
+        if (title.contains("矿物碎片")) {
             event.setCancelled(true);
         }
         if (title.contains("矿物碎片")) {
@@ -52,7 +51,6 @@ public class ShardMenuEvents implements Listener {
 
 
     }
-
 
 
 }

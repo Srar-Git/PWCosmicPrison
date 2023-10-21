@@ -19,6 +19,7 @@ public class ValuePWItem extends SimpleExpression<ItemType> {
     }
 
     private Expression<String> namein;
+
     @Override
     public Class<? extends ItemType> getReturnType() {
         return ItemType.class;

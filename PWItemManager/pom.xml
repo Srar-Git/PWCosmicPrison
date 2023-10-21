@@ -12,8 +12,6 @@
     <artifactId>PWItemManager</artifactId>
 
 
-
-
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -30,18 +28,19 @@
             <artifactId>Skript</artifactId>
 
         </dependency>
-
-<!--        本项目自己的依赖-->
-        <dependency>
-            <groupId>cn.pixelwar</groupId>
-            <artifactId>PWLevel</artifactId>
-            <version>1.0.0</version>
-        </dependency>
         <dependency>
             <groupId>de.tr7zw</groupId>
             <artifactId>item-nbt-api-plugin</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!--        本项目自己的依赖-->
+        <dependency>
+            <groupId>cn.pixelwar</groupId>
+            <artifactId>PWLevel</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
     </dependencies>
 
 

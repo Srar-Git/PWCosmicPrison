@@ -11,25 +11,24 @@ public class Listeners implements Listener {
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
-        Action action =  event.getAction();
+        Action action = event.getAction();
         if (
                 action.equals(Action.RIGHT_CLICK_AIR) ||
-                action.equals(Action.RIGHT_CLICK_BLOCK)
-        ){
+                        action.equals(Action.RIGHT_CLICK_BLOCK)
+        ) {
             GetItemNBT getItemNBT = new GetItemNBT();
             String tier = getItemNBT.getItemStringNBT(event.getPlayer().getItemInHand(), "shardtier");
             if (
                     event.getPlayer().getItemInHand().getType().equals(Material.PRISMARINE_SHARD) ||
-                    tier.equals("common") ||
-                    tier.equals("uncommon") ||
-                    tier.equals("rare") ||
-                    tier.equals("epic") ||
-                    tier.equals("legend") ||
-                    tier.equals("god")
-            ){
+                            tier.equals("common") ||
+                            tier.equals("uncommon") ||
+                            tier.equals("rare") ||
+                            tier.equals("epic") ||
+                            tier.equals("legend") ||
+                            tier.equals("god")
+            ) {
 
             }
-
 
 
         }

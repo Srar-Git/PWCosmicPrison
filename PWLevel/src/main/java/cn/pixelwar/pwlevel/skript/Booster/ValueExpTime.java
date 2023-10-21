@@ -22,6 +22,7 @@ public class ValueExpTime extends SimpleExpression<Integer> {
 
     private Expression<Player> player;
     private PlayerBoosterDataManager playerBoosterDataManager = new PlayerBoosterDataManager();
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
@@ -48,13 +49,13 @@ public class ValueExpTime extends SimpleExpression<Integer> {
     @Nullable
     protected Integer[] get(Event event) {
         Player p = player.getSingle(event);
-        if (getPlayerExpBoosterDataMap().containsKey(p.getName())){
+        if (getPlayerExpBoosterDataMap().containsKey(p.getName())) {
             if (p != null) {
-                return new Integer[] {
+                return new Integer[]{
                         playerBoosterDataManager.getExpBoosterTime(p)
                 };
             }
         }
-        return new Integer[] {0};
+        return new Integer[]{0};
     }
 }

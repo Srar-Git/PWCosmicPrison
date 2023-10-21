@@ -12,14 +12,14 @@ public class CustomItems {
     private static File file;
     private static FileConfiguration itemFile;
 
-    public static void setupItemFile(){
+    public static void setupItemFile() {
 
         file = new File(Bukkit.getServer().getPluginManager().getPlugin("PWItemManager").getDataFolder(), "items.yml");
 
-        if(!(file.exists())){
+        if (!(file.exists())) {
             try {
                 file.createNewFile();
-            }catch (IOException e){
+            } catch (IOException e) {
                 //啊啊啊啊
             }
         }
@@ -27,17 +27,16 @@ public class CustomItems {
         itemFile = YamlConfiguration.loadConfiguration(file);
 
 
-
     }
 
-    public static FileConfiguration getItemFile(){
+    public static FileConfiguration getItemFile() {
         return itemFile;
     }
 
-    public static void save(){
+    public static void save() {
         try {
             itemFile.save(file);
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("保存Items文件错误");
         }
     }

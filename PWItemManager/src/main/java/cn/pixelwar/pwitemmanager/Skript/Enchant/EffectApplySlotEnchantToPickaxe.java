@@ -11,7 +11,7 @@ import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
 
-public class EffectApplySlotEnchantToPickaxe  extends Effect {
+public class EffectApplySlotEnchantToPickaxe extends Effect {
     private Expression<Player> playerin;
     private Expression<Number> slotin;
     private Expression<String> enchantEnglishNamein;
@@ -49,7 +49,7 @@ public class EffectApplySlotEnchantToPickaxe  extends Effect {
         int level = levelin.getSingle(e).intValue();
         int success = successin.getSingle(e).intValue();
         int slot = slotin.getSingle(e).intValue();
-        applyEnchant.applySlotItemEnchantToPickaxe(player,slot, enchantEnglishName, level,success, false);
+        applyEnchant.applySlotItemEnchantToPickaxe(player, slot, enchantEnglishName, level, success, false);
     }
 
 
